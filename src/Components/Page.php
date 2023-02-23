@@ -4,7 +4,7 @@ namespace AymanAlhattami\FilamentPageWithSidebar\Components;
 
 use Illuminate\View\Component;
 
-class PageWithSidebar extends Component
+class Page extends Component
 {
     public string $filamentResource;
 
@@ -25,6 +25,6 @@ class PageWithSidebar extends Component
      */
     public function render()
     {
-        return view('filament-page-with-sidebar::components.page-with-sidebar');
+        return view('filament-page-with-sidebar::components.page');
     }
 }

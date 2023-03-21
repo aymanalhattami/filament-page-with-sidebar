@@ -1,0 +1,29 @@
+{
+    "name": "aymanalhattami/filament-page-with-sidebar",
+    "description": "Organize resource pages in sidebar instead of putting all the buttons and links elsewhere in order to make navigation between pages more confort",
+    "type": "library",
+    "require": {
+        "filament/filament": "^2.17",
+        "spatie/laravel-package-tools": "^1.14"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "AymanAlhattami\\FilamentPageWithSidebar\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Ayman Alhattami",
+            "email": "ayman.m.alhattami@gmail.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "AymanAlhattami\\FilamentPageWithSidebar\\FilamentPageWithSidebarServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "dev"
+}

@@ -1,7 +1,7 @@
 
 # Filament Page With Sidebar
 
-Organize resource pages in sidebar in order to make navigation between resource pages more confort
+Organize resource pages in sidebar in order to make navigation between resource pages more comfort
 
 
 ## Screenshots

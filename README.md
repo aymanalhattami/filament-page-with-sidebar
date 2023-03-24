@@ -1,7 +1,7 @@
 
 # Filament Page With Sidebar
 
-Organize resource pages in sidebar in order to make navigation between resource pages more comfort
+Organize resource pages in the sidebar in order to make navigation between resource pages more comfort
 
 
 ## Screenshots
@@ -11,14 +11,14 @@ LTR (Left to Right)
 RTL (Right to Left)
 ![filament-page-with-sidebar](./images/users-view-AR.png)
 
-This package only for [Filament Admin Panel](https://filamentphp.com/)
+This package is only for [Filament Admin Panel](https://filamentphp.com/)
 
 ## Installation
 ```bash
 $ composer require aymanalhattami/filament-page-with-sidebar
 ```
 ## Usage
-1. First you need to prepare resource pages, for example we have edit page, view page, manage page, change password page and dashboar page for UserResource
+1. First you need to prepare resource pages, for example, we have an edit page, view page, manage page, change password page, and dashboar page for UserResource
 ```php
 use Filament\Resources\Resource;
 
@@ -43,7 +43,7 @@ class UserResource extends Resource
 }
 ```
 
-2. You should define record property in each page, example
+2. You should define record property on each page, for example
 
 ```php
 use App\Models\User;
@@ -66,7 +66,7 @@ class ChangePasswordUser extends Page
 }
 ```
 
-3. Then, define sidebar method as static in the resource
+3. Then, define the sidebar method as static in the resource
 ```php
 use Illuminate\Database\Eloquent\Model;
 use Filament\Resources\Resource;
@@ -110,7 +110,7 @@ class UserResource extends Resource
 }
 ```
 
-4. Use x-filament-page-with-sidebar::page component in page blade file as wrapper for the whole content
+4. Use x-filament-page-with-sidebar::page component in the page blade file as a wrapper for the whole content
 ```php
 // filament.resources.user-resource.pages.change-password-user
 <x-filament-page-with-sidebar::page>
@@ -120,7 +120,7 @@ class UserResource extends Resource
 ```
 
 ## More Options
-You can set title or description by using setTitle and setDescription methods for the sidebar that will at the begaining of sidebar on the top, example 
+You can set the title or description by using setTitle and setDescription methods for the sidebar that will be at the beginning of the sidebar on the top, for example 
 ```php
 // ...
 
@@ -146,7 +146,7 @@ public static function sidebar(Model $record): FilamentPageSidebar
 // ...
 ```
 
-You can add icon to the item by using icon method, example 
+You can add an icon to the item by using the icon method, for example 
 ```php
 // ...
 
@@ -166,7 +166,7 @@ public static function sidebar(Model $record): FilamentPageSidebar
 // ...
 ```
 
-You can make item active "has different background color" by using isActiveWhen method, example 
+You can make an item active "has a different background color" by using isActiveWhen method, for example 
 ```php
 // ...
 public static function sidebar(Model $record): FilamentPageSidebar
@@ -186,7 +186,7 @@ public static function sidebar(Model $record): FilamentPageSidebar
 // ...
 ```
 
-You can hide item from sidebar by using isHiddenWhen method, example 
+You can hide an item from the sidebar by using isHiddenWhen method, for example 
 ```php
 // ...
 
@@ -206,7 +206,7 @@ public static function sidebar(Model $record): FilamentPageSidebar
 // ...
 ```
 
-You can add badge to the item by using badge method, example 
+You can add a badge to the item by using the badge method, for example 
 ```php
 // ...
 public static function sidebar(Model $record): FilamentPageSidebar
@@ -225,5 +225,6 @@ public static function sidebar(Model $record): FilamentPageSidebar
 // ...
 ```
 
-Project Demo Link
+Demo Project Link
+
 https://github.com/aymanalhattami/filament-page-with-sidebar-project

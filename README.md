@@ -46,7 +46,7 @@ class UserResource extends Resource
 2. Define a $record property in each custom page, example
 
 ```php
-public ModelName $record;
+public ModelName $record; // public User $record;
 ```
 
 3. Then, define the sidebar method as static in the resource

@@ -43,27 +43,10 @@ class UserResource extends Resource
 }
 ```
 
-2. You should define record property in each page, example
+2. Define a $record property in each custom page, example
 
 ```php
-use App\Models\User;
-use Filament\Resources\Pages\Page;
-use App\Filament\Resources\UserResource;
-
-class ChangePasswordUser extends Page
-{
-    // ...
-    protected static string $resource = UserResource::class;
-
-    protected static string $view = 'filament.resources.user-resource.pages.change-password-user';
-
-    public function mount($record)
-    {
-        $this->record = User::find($record);
-    }
-
-    // ...
-}
+public ModelName $record;
 ```
 
 3. Then, define sidebar method as static in the resource

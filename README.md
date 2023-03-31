@@ -227,13 +227,12 @@ You can translate a label by using translateLabel method, for example
 // ...
 public static function sidebar(Model $record): FilamentPageSidebar
 {
-    return FilamentPageSidebar::make()
+    return FilamentPageSidebar::make()->translateLabel()
         ->setNavigationItems([
             PageNavigationItem::make('Change Password')
                 ->url(function () use ($record) {
                     return static::getUrl('password.change', ['record' => $record->id]);
                 })
-                ->badge("badge name")
             // ... more items
         ]);
 }

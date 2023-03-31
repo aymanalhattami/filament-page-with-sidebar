@@ -17,6 +17,13 @@ This package is only for [Filament Admin Panel](https://filamentphp.com/)
 ```bash
 $ composer require aymanalhattami/filament-page-with-sidebar
 ```
+
+optionally you can publish config, views and components files
+```bash
+$ php artisan vendor:publish --tag="filament-page-with-sidebar-config"
+$ php artisan vendor:publish --tag="filament-page-with-sidebar-views"
+$ php artisan vendor:publish --tag="filament-page-with-sidebar-components"
+```
 ## Usage
 1. First you need to prepare resource pages, for example, we have an edit page, view page, manage page, change password page, and dashboar page for UserResource
 ```php
@@ -103,6 +110,8 @@ class UserResource extends Resource
 ```
 
 ## More Options
+
+### Set title and description for sidebar
 You can set the title or description by using setTitle and setDescription methods for the sidebar that will be at the beginning of the sidebar on the top, for example 
 ```php
 // ...
@@ -129,6 +138,7 @@ public static function sidebar(Model $record): FilamentPageSidebar
 // ...
 ```
 
+### Add icon
 You can add an icon to the item by using the icon method, for example 
 ```php
 // ...
@@ -149,6 +159,7 @@ public static function sidebar(Model $record): FilamentPageSidebar
 // ...
 ```
 
+### Set active item
 You can make an item active "has a different background color" by using isActiveWhen method, for example 
 ```php
 // ...
@@ -169,6 +180,7 @@ public static function sidebar(Model $record): FilamentPageSidebar
 // ...
 ```
 
+### Hide the item
 You can hide an item from the sidebar by using isHiddenWhen method, for example 
 ```php
 // ...
@@ -189,7 +201,28 @@ public static function sidebar(Model $record): FilamentPageSidebar
 // ...
 ```
 
+### Add bage to the item
 You can add a badge to the item by using the badge method, for example 
+```php
+// ...
+public static function sidebar(Model $record): FilamentPageSidebar
+{
+    return FilamentPageSidebar::make()
+        ->setNavigationItems([
+            PageNavigationItem::make('Change Password')
+                ->url(function () use ($record) {
+                    return static::getUrl('password.change', ['record' => $record->id]);
+                })
+                ->badge("badge name")
+            // ... more items
+        ]);
+}
+    ,
+// ...
+```
+
+### Translate the item
+You can translate a label by using translateLabel method, for example 
 ```php
 // ...
 public static function sidebar(Model $record): FilamentPageSidebar

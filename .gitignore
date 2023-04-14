@@ -1,4 +1,5 @@
 /node_modules
 /vendor
+/.history
 composer.lock
 TODO.md

@@ -2,9 +2,9 @@
 
 namespace AymanAlhattami\FilamentPageWithSidebar;
 
+use AymanAlhattami\FilamentPageWithSidebar\Components\Page;
 use Filament\PluginServiceProvider;
 use Spatie\LaravelPackageTools\Package;
-use AymanAlhattami\FilamentPageWithSidebar\Components\PageWithSidebar;
 
 class FilamentPageWithSidebarServiceProvider extends PluginServiceProvider
 {
@@ -14,6 +14,6 @@ class FilamentPageWithSidebarServiceProvider extends PluginServiceProvider
             ->name('filament-page-with-sidebar')
             ->hasConfigFile()
             ->hasViews()
-            ->hasViewComponents('filament-page-with-sidebar', PageWithSidebar::class);
+            ->hasViewComponents('filament-page-with-sidebar', Page::class);
     }
 }

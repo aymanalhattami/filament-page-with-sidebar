@@ -11,7 +11,8 @@ LTR (Left to Right)
 RTL (Right to Left)
 ![filament-page-with-sidebar](./images/users-view-AR.png)
 
-This package is only for [Filament Admin Panel](https://filamentphp.com/)
+Please check out this video by Povilas Korop (Laravel Daily) to learn more about our package: https://www.youtube.com/watch?v=J7dH8O-YBnY
+
 
 ## Installation
 ```bash

@@ -23,10 +23,10 @@
                     </div>
                 @endif
             </div>
-            <ul class="@if( $sidebar->getTitle() != null || $sidebar->getDescription() != null ) mt-4 @endif space-y-2 font-inter font-medium" wire:ignore>
+            <ul class="@if ($sidebar->getTitle() != null || $sidebar->getDescription() != null) mt-4 @endif space-y-2 font-inter font-medium" wire:ignore>
                 @foreach ($sidebar->getNavigationItems() as $item)
                     @if (!$item->isHidden())
-                        <x-filament::layouts.app.sidebar.item
+                        <x-filament-page-with-sidebar::item>
                             :active="$item->isActive()"
                             :icon="$item->getIcon()"
                             :active-icon="$item->getActiveIcon()"
@@ -35,7 +35,7 @@
                             :badgeColor="$item->getBadgeColor()"
                             :shouldOpenUrlInNewTab="$item->shouldOpenUrlInNewTab()">
                             {{ $item->getLabel() }}
-                        </x-filament::layouts.app.sidebar.item>
+                        </x-filament-page-with-sidebar::item>
                     @endif
                 @endforeach
             </ul>

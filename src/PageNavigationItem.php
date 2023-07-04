@@ -7,7 +7,7 @@ use Filament\Navigation\NavigationItem;
 
 class PageNavigationItem extends NavigationItem
 {
-    protected bool $isHidden = false;
+    protected Closure|bool $isHidden = false;
     protected bool $shouldTranslateLabel = false;
 
     public function isHiddenWhen(Closure|bool $condition): static

@@ -7,7 +7,6 @@ use Filament\Navigation\NavigationItem;
 
 class PageNavigationItem extends NavigationItem
 {
-    protected bool $isHidden = false;
     protected bool $shouldTranslateLabel = false;
 
     public function isHiddenWhen(Closure|bool $condition): static
@@ -15,11 +14,6 @@ class PageNavigationItem extends NavigationItem
         $this->isHidden = $condition instanceof Closure ? $condition() : $condition;
 
         return $this;
-    }
-
-    public function isHidden(): bool
-    {
-        return $this->isHidden;
     }
 
     public function translateLabel(bool $shouldTranslateLabel = true): static
@@ -31,8 +25,8 @@ class PageNavigationItem extends NavigationItem
 
     public function getLabel(): string
     {
-        return (is_string($this->label) && $this->shouldTranslateLabel) ?
-            __($this->label) :
-            $this->label;
+        return (is_string($this->label) && $this->shouldTranslateLabel)
+            ? __($this->label)
+            :  $this->label;
     }
 }

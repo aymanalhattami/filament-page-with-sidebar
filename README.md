@@ -1,7 +1,10 @@
 
 # Filament Page With Sidebar
 
-Organize resource pages in the sidebar in order to make navigation between resource pages more comfort
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/aymanalhattami/filament-page-with-sidebar.svg?style=flat-square)](https://packagist.org/packages/aymanalhattami/filament-page-with-sidebar)
+[![Total Downloads](https://img.shields.io/packagist/dt/aymanalhattami/filament-page-with-sidebar.svg?style=flat-square)](https://packagist.org/packages/aymanalhattami/filament-page-with-sidebar)
+
+Organize resource pages in the sidebar in order to make navigation between resource pages more comfortable.
 
 
 ## Screenshots

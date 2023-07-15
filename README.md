@@ -19,13 +19,13 @@ Please check out this video by Povilas Korop (Laravel Daily) to learn more about
 
 ## Installation
 ```bash
-$ composer require aymanalhattami/filament-page-with-sidebar
+composer require aymanalhattami/filament-page-with-sidebar
 ```
 
 optionally you can publish config, views and components files
 ```bash
-$ php artisan vendor:publish --tag="filament-page-with-sidebar-config"
-$ php artisan vendor:publish --tag="filament-page-with-sidebar-views"
+php artisan vendor:publish --tag="filament-page-with-sidebar-config"
+php artisan vendor:publish --tag="filament-page-with-sidebar-views"
 ```
 ## Usage
 1. First you need to prepare resource pages, for example, we have an edit page, view page, manage page, change password page, and dashboar page for UserResource

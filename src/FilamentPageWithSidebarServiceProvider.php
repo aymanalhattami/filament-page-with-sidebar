@@ -2,10 +2,12 @@
 
 namespace AymanAlhattami\FilamentPageWithSidebar;
 
-use Filament\PluginServiceProvider;
+use Filament\Support\Assets\Css;
 use Spatie\LaravelPackageTools\Package;
+use Filament\Support\Facades\FilamentAsset;
+use Spatie\LaravelPackageTools\PackageServiceProvider;
 
-class FilamentPageWithSidebarServiceProvider extends PluginServiceProvider
+class FilamentPageWithSidebarServiceProvider extends PackageServiceProvider
 {
     public function configurePackage(Package $package): void
     {
@@ -13,6 +15,14 @@ class FilamentPageWithSidebarServiceProvider extends PluginServiceProvider
             ->name('filament-page-with-sidebar')
             ->hasConfigFile()
             ->hasViews()
-            ->hasViewComponents('filament-page-with-sidebar');
+            ->hasViewComponents('filament-page-with-sidebar')
+            ->hasAssets();
+
+        FilamentAsset::register(
+            assets: [
+                Css::make('filament-page-with-sidebar', __DIR__ . '/../resources/dist/app.css'),
+            ],
+            package: 'aymanalhattami/filament-page-with-sidebar'
+        );
     }
 }

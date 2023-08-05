@@ -5,3 +5,4 @@
 - Filament v3 support
 
 **Full Changelog**: 
+https://github.com/aymanalhattami/filament-page-with-sidebar/compare/1.1.6...2.0.0

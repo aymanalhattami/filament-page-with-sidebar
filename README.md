@@ -16,6 +16,8 @@ RTL (Right to Left)
 
 Please check out this video by Povilas Korop (Laravel Daily) to learn more about our package: https://www.youtube.com/watch?v=J7dH8O-YBnY
 
+> **Note:**
+> For Filament 2.x use version 1.x
 
 ## Installation
 ```bash

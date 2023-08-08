@@ -14,7 +14,7 @@ LTR (Left to Right)
 RTL (Right to Left)
 ![filament-page-with-sidebar](https://raw.githubusercontent.com/aymanalhattami/filament-page-with-sidebar/main/images/users-view-AR.png)
 
-Please check out this video by Povilas Korop (Laravel Daily) to learn more about our package: https://www.youtube.com/watch?v=J7dH8O-YBnY
+Please check out this video by Povilas Korop (Laravel Daily) to learn more about our package: [link](https://www.youtube.com/watch?v=J7dH8O-YBnY)
 
 > **Note:**
 > For Filament 2.x use version 1.x

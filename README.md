@@ -9,10 +9,10 @@ Organize resource pages in the sidebar in order to make navigation between resou
 
 ## Screenshots
 LTR (Left to Right)
-![filament-page-with-sidebar](./images/users-view-EN.png)
+![filament-page-with-sidebar](https://raw.githubusercontent.com/aymanalhattami/filament-page-with-sidebar/main/images/users-view-EN.png)
 
 RTL (Right to Left)
-![filament-page-with-sidebar](./images/users-view-AR.png)
+![filament-page-with-sidebar](https://raw.githubusercontent.com/aymanalhattami/filament-page-with-sidebar/main/images/users-view-AR.png)
 
 Please check out this video by Povilas Korop (Laravel Daily) to learn more about our package: https://www.youtube.com/watch?v=J7dH8O-YBnY
 
@@ -245,6 +245,4 @@ public static function sidebar(Model $record): FilamentPageSidebar
 // ...
 ```
 
-Demo Project Link
-
-https://github.com/aymanalhattami/filament-page-with-sidebar-project
+[Demo Project Link](https://github.com/aymanalhattami/filament-page-with-sidebar-project)

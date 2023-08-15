@@ -82,7 +82,7 @@
 
         <span
             @if (filament()->isSidebarCollapsibleOnDesktop())
-                x-show="$store.sidebar.isOpen"
+                x-show="true"
                 x-transition:enter="lg:transition lg:delay-100"
                 x-transition:enter-start="opacity-0"
                 x-transition:enter-end="opacity-100"
@@ -95,7 +95,7 @@
         @if (filled($badge))
             <span
                 @if (filament()->isSidebarCollapsibleOnDesktop())
-                    x-show="$store.sidebar.isOpen"
+                    x-show="true"
                     x-transition:enter="lg:transition lg:delay-100"
                     x-transition:enter-start="opacity-0"
                     x-transition:enter-end="opacity-100"

@@ -11,7 +11,9 @@ trait HasPageSidebar
     public function mountHasPageSidebar(): void
     {
         // Using ${'view'} instead of $view in order to avoid Intelephense warning
-        if (isset(static::${'view'})) {
+        if (isset(static::${'viewSidebar'})) {
+            static::${'view'} = static::${'viewSidebar'};
+        } elseif (isset(static::${'view'})) {
             static::${'view'} = 'filament-page-with-sidebar::proxy';
         }
     }
@@ -22,15 +24,17 @@ trait HasPageSidebar
      */
     public function getIncludedSidebarView(): string
     {
-        return collect(class_parents($this))
-            ->filter(function ($class) {
-                return is_subclass_of($class, '\Filament\Pages\Page');
-            })
-            ->map(function ($class) {
-                return (new \ReflectionClass($class))->getDefaultProperties()['view'] ?? null;
-            })
-            ->filter()
-            ->first()
-            ?: throw new \Exception('No view detected for the Sidebar. Implement Filament\Pages\Page object with valid static $view');
+        if (is_subclass_of($this, '\Filament\Pages\Page')) {
+            $props = collect(
+                (new \ReflectionClass($this))->getDefaultProperties()
+            );
+
+            if ($props->get('view')) {
+                return $props->get('view');
+            }
+        }
+
+        // Else:
+        throw new \Exception('No view detected for the Sidebar. Implement Filament\Pages\Page object with valid static $view');
     }
 }

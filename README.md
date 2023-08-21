@@ -125,6 +125,12 @@ class ViewUser extends ViewRecord
 {
     use HasPageSidebar;
 
+    /**
+     * $viewSidebar
+     * override $view when HasPageSidebar is activated
+     */
+    // protected static string $viewSidebar = 'filament.[...].user-resource.pages.view-user';
+
     protected static string $resource = UserResource::class;
 
     protected function getHeaderActions(): array
@@ -135,6 +141,9 @@ class ViewUser extends ViewRecord
     }
 }
 ```
+
+You can still overwritte the default view with ```protected static string $viewSidebar = 'filament.[...].user-resource.pages.view-user';```
+
 
 ## More Options
 

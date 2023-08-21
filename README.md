@@ -121,11 +121,11 @@ This trait will add the sidebar to the Page.
 // ...
 use AymanAlhattami\FilamentPageWithSidebar\Traits\HasPageSidebar;
 
-class ViewPerson extends ViewRecord
+class ViewUser extends ViewRecord
 {
     use HasPageSidebar;
 
-    protected static string $resource = PersonResource::class;
+    protected static string $resource = UserResource::class;
 
     protected function getHeaderActions(): array
     {

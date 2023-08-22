@@ -8,8 +8,10 @@ trait HasPageSidebar
      * public function mountHasPageSidebar
      *   Register automatically view if available
      */
-    public function mountHasPageSidebar(): void
+    public function bootHasPageSidebar(): void
     {
+        // Why boot ? https://livewire.laravel.com/docs/lifecycle-hooks#boot
+
         // Using ${'view'} instead of $view in order to avoid Intelephense warning
         if (isset(static::${'viewSidebar'})) {
             static::${'view'} = static::${'viewSidebar'};

@@ -16,7 +16,7 @@ Please check out this video by Povilas Korop (Laravel Daily) to learn more about
 
 ## Installation
 ```bash
-$ composer require aymanalhattami/filament-page-with-sidebar
+$ composer require aymanalhattami/filament-page-with-sidebar:"^1.0"
 ```
 
 optionally you can publish config, views and components files

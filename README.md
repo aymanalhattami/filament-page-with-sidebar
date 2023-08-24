@@ -123,13 +123,7 @@ use AymanAlhattami\FilamentPageWithSidebar\Traits\HasPageSidebar;
 
 class ViewUser extends ViewRecord
 {
-    use HasPageSidebar;
-
-    /**
-     * $viewSidebar
-     * override $view when HasPageSidebar is activated
-     */
-    // protected static string $viewSidebar = 'filament.[...].user-resource.pages.view-user';
+    use HasPageSidebar; // use this trait to activate the Sidebar
 
     protected static string $resource = UserResource::class;
 
@@ -142,7 +136,7 @@ class ViewUser extends ViewRecord
 }
 ```
 
-You can still overwritte the default view with ```protected static string $viewSidebar = 'filament.[...].user-resource.pages.view-user';```
+You can still overwritte the default view with ```protected static string $hasSidebar = false;``` with ```protected static $view = 'filament.[...].user-resource.pages.view-user';```
 
 
 ## More Options

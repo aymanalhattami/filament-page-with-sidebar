@@ -114,8 +114,8 @@ class UserResource extends Resource
 
 ```
 
-or add the trait ```AymanAlhattami\FilamentPageWithSidebar\Traits\HasPageSidebar``` on any page you wan the sidebar included.
-This trait will add the sidebar to the Page.
+or add the trait ```AymanAlhattami\FilamentPageWithSidebar\Traits\HasPageSidebar``` on any page you want the sidebar included.
+This trait will add the sidebar to the Page. Add it to all your Resource Pages :
 
 ```php
 // ...
@@ -136,7 +136,7 @@ class ViewUser extends ViewRecord
 }
 ```
 
-You can still overwritte the default view with ```protected static string $hasSidebar = false;``` with ```protected static $view = 'filament.[...].user-resource.pages.view-user';```
+If you wan to use custom view, you can still overwrite the default value with ```protected static string $hasSidebar = false;``` and ```protected static $view = 'filament.[...].user-resource.pages.view-user';```
 
 
 ## More Options

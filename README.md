@@ -17,7 +17,7 @@ RTL (Right to Left)
 Please check out this video by Povilas Korop (Laravel Daily) to learn more about our package: [link](https://www.youtube.com/watch?v=J7dH8O-YBnY)
 
 > **Note:**
-> For Filament 2.x use version 1.x
+> For [Filament 2.x](https://filamentphp.com/docs/2.x/admin/installation)  use [version 1.x](https://github.com/aymanalhattami/filament-page-with-sidebar/tree/1.x)
 
 ## Installation
 ```bash
@@ -113,6 +113,31 @@ class UserResource extends Resource
 </x-filament-page-with-sidebar::page>
 
 ```
+
+or add the trait ```AymanAlhattami\FilamentPageWithSidebar\Traits\HasPageSidebar``` on any page you want the sidebar included.
+This trait will add the sidebar to the Page. Add it to all your Resource Pages :
+
+```php
+// ...
+use AymanAlhattami\FilamentPageWithSidebar\Traits\HasPageSidebar;
+
+class ViewUser extends ViewRecord
+{
+    use HasPageSidebar; // use this trait to activate the Sidebar
+
+    protected static string $resource = UserResource::class;
+
+    protected function getHeaderActions(): array
+    {
+        return [
+            Actions\EditAction::make(),
+        ];
+    }
+}
+```
+
+If you wan to use custom view, you can still overwrite the default value with ```protected static string $hasSidebar = false;``` and ```protected static $view = 'filament.[...].user-resource.pages.view-user';```
+
 
 ## More Options
 

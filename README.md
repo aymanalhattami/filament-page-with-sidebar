@@ -114,6 +114,31 @@ class UserResource extends Resource
 
 ```
 
+or add the trait ```AymanAlhattami\FilamentPageWithSidebar\Traits\HasPageSidebar``` on any page you want the sidebar included.
+This trait will add the sidebar to the Page. Add it to all your Resource Pages :
+
+```php
+// ...
+use AymanAlhattami\FilamentPageWithSidebar\Traits\HasPageSidebar;
+
+class ViewUser extends ViewRecord
+{
+    use HasPageSidebar; // use this trait to activate the Sidebar
+
+    protected static string $resource = UserResource::class;
+
+    protected function getHeaderActions(): array
+    {
+        return [
+            Actions\EditAction::make(),
+        ];
+    }
+}
+```
+
+If you wan to use custom view, you can still overwrite the default value with ```protected static string $hasSidebar = false;``` and ```protected static $view = 'filament.[...].user-resource.pages.view-user';```
+
+
 ## More Options
 
 ### Set title and description for sidebar

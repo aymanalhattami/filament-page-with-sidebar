@@ -21,11 +21,11 @@
                         2xl:col-[--col-span-2xl]
                         rounded"
                 style="--col-span-default: span 12;
-                        --col-span-sm: span {{ $sidebarWidths['sm'] }};
-                        --col-span-md: span {{ $sidebarWidths['md'] }};
-                        --col-span-lg: span {{ $sidebarWidths['lg'] }};
-                        --col-span-xl: span {{ $sidebarWidths['xl'] }};
-                        --col-span-2xl: span {{ $sidebarWidths['2xl'] }};">
+                        --col-span-sm: span {{ $sidebarWidths['sm'] ?? 12 }};
+                        --col-span-md: span {{ $sidebarWidths['md'] ?? 3 }};
+                        --col-span-lg: span {{ $sidebarWidths['lg'] ?? 3 }};
+                        --col-span-xl: span {{ $sidebarWidths['xl'] ?? 3 }};
+                        --col-span-2xl: span {{ $sidebarWidths['2xl'] ?? 3 }};">
             <div class="">
                 <div class="flex items-center rtl:space-x-reverse">
                     @if ($sidebar->getTitle() != null || $sidebar->getDescription() != null)
@@ -68,11 +68,11 @@
                         2xl:col-[--col-span-2xl]
                         -mt-8"
                 style="--col-span-default: span 12;
-                        --col-span-sm: span {{ 12 - $sidebarWidths['sm'] }};
-                        --col-span-md: span {{ 12 - $sidebarWidths['md'] }};
-                        --col-span-lg: span {{ 12 - $sidebarWidths['lg'] }};
-                        --col-span-xl: span {{ 12 - $sidebarWidths['xl'] }};
-                        --col-span-2xl: span {{ 12 - $sidebarWidths['2xl'] }};">
+                        --col-span-sm: span {{ 12 - $sidebarWidths['sm'] ?? 12 }};
+                        --col-span-md: span {{ 12 - $sidebarWidths['md'] ?? 3 }};
+                        --col-span-lg: span {{ 12 - $sidebarWidths['lg'] ?? 3 }};
+                        --col-span-xl: span {{ 12 - $sidebarWidths['xl'] ?? 3 }};
+                        --col-span-2xl: span {{ 12 - $sidebarWidths['2xl'] ?? 3 }};">
             {{ $slot }}
         </div>
     </div>

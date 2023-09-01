@@ -1,11 +1,31 @@
 @php
     $sidebar = static::getResource()::sidebar($this->record);
+
+    $sidebarWidths = config('filament-page-with-sidebar.sidebar_width') ?? [
+        'sm' => 12,
+        'md' => 3,
+        'lg' => 3,
+        'xl' => 3,
+        '2xl' => 3,
+    ];
 @endphp
 
 <div class="mt-8">
     <div class="grid grid-cols-12 gap-4 sm:gap-5 lg:gap-6">
         <div
-            class="col-span-12 md:col-span-{{ config('filament-page-with-sidebar.sidebar_width.md') }} lg:col-span-{{ config('filament-page-with-sidebar.sidebar_width.lg') }} xl:col-span-{{ config('filament-page-with-sidebar.sidebar_width.xl') }} 2xl:col-span-{{ config('filament-page-with-sidebar.sidebar_width.2xl') }} rounded">
+                class="col-[--col-span-default]
+                        sm:col-[--col-span-sm]
+                        md:col-[--col-span-md]
+                        lg:col-[--col-span-lg]
+                        xl:col-[--col-span-xl]
+                        2xl:col-[--col-span-2xl]
+                        rounded"
+                style="--col-span-default: span 12;
+                        --col-span-sm: span {{ $sidebarWidths['sm'] }};
+                        --col-span-md: span {{ $sidebarWidths['md'] }};
+                        --col-span-lg: span {{ $sidebarWidths['lg'] }};
+                        --col-span-xl: span {{ $sidebarWidths['xl'] }};
+                        --col-span-2xl: span {{ $sidebarWidths['2xl'] }};">
             <div class="">
                 <div class="flex items-center rtl:space-x-reverse">
                     @if ($sidebar->getTitle() != null || $sidebar->getDescription() != null)
@@ -40,7 +60,19 @@
         </div>
 
         <div
-            class="col-span-12 md:col-span-{{ 12 - config('filament-page-with-sidebar.sidebar_width.md') }} lg:col-span-{{ 12 - config('filament-page-with-sidebar.sidebar_width.lg') }} xl:col-span-{{ 12 - config('filament-page-with-sidebar.sidebar_width.xl') }} 2xl:col-span-{{ 12 - config('filament-page-with-sidebar.sidebar_width.2xl') }}" style="margin-top: -2em">
+                class="col-[--col-span-default]
+                        sm:col-[--col-span-sm]
+                        md:col-[--col-span-md]
+                        lg:col-[--col-span-lg]
+                        xl:col-[--col-span-xl]
+                        2xl:col-[--col-span-2xl]
+                        -mt-8"
+                style="--col-span-default: span 12;
+                        --col-span-sm: span {{ $sidebarWidths['sm'] }};
+                        --col-span-md: span {{ $sidebarWidths['md'] }};
+                        --col-span-lg: span {{ $sidebarWidths['lg'] }};
+                        --col-span-xl: span {{ $sidebarWidths['xl'] }};
+                        --col-span-2xl: span {{ $sidebarWidths['2xl'] }};">
             {{ $slot }}
         </div>
     </div>

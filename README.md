@@ -17,7 +17,7 @@ RTL (Right to Left)
 Please check out this video by Povilas Korop (Laravel Daily) to learn more about our package: [link](https://www.youtube.com/watch?v=J7dH8O-YBnY)
 
 > **Note:**
-> For Filament 2.x use version 1.x
+> For [Filament 2.x](https://filamentphp.com/docs/2.x/admin/installation)  use [version 1.x](https://github.com/aymanalhattami/filament-page-with-sidebar/tree/1.x)
 
 ## Installation
 ```bash

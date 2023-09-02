@@ -9,8 +9,8 @@ class FilamentPageSidebar
 {
     use EvaluatesClosures;
 
-    protected ?string $title = null;
-    protected ?string $description = null;
+    protected string | Closure | null  $title = null;
+    protected string | Closure | null  $description = null;
     protected array $navigationItems;
 
     public function __construct()
@@ -23,19 +23,19 @@ class FilamentPageSidebar
     }
 
 
-    public function setTitle(Closure | string $title): static
+    public function setTitle(string | Closure $title): static
     {
-        $this->title = $this->evaluate($title);
+        $this->title = $title;
 
         return $this;
     }
 
-    public function getTitle(): ?string
+    public function getTitle(): string
     {
-        return $this->title;
+        return $this->evaluate($this->title);
     }
 
-    public function setDescription(Closure | string $description): static
+    public function setDescription(string | Closure $description): static
     {
         $this->description = $this->evaluate($description);
 
@@ -44,7 +44,7 @@ class FilamentPageSidebar
 
     public function getDescription(): ?string
     {
-        return $this->description;
+        return $this->evaluate($this->description);
     }
 
     public function setNavigationItems(array $navigationItems): static

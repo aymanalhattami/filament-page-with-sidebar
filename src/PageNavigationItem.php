@@ -25,8 +25,10 @@ class PageNavigationItem extends NavigationItem
 
     public function getLabel(): string
     {
-        return (is_string($this->label) && $this->shouldTranslateLabel)
-            ? __($this->label)
-            :  $this->label;
+        $label = parent::getLabel();
+
+        return (is_string($label) && $this->shouldTranslateLabel)
+            ? __($label)
+            : $label;
     }
 }

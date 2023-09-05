@@ -270,4 +270,9 @@ public static function sidebar(Model $record): FilamentPageSidebar
 // ...
 ```
 
+## License
+
+The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
+
+
 [Demo Project Link](https://github.com/aymanalhattami/filament-page-with-sidebar-project)

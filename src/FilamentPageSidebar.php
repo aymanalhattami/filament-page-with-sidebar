@@ -2,10 +2,15 @@
 
 namespace AymanAlhattami\FilamentPageWithSidebar;
 
+use Closure;
+use Filament\Support\Concerns\EvaluatesClosures;
+
 class FilamentPageSidebar
 {
-    protected ?string $title = null;
-    protected ?string $description = null;
+    use EvaluatesClosures;
+
+    protected string | Closure | null  $title = null;
+    protected string | Closure | null  $description = null;
     protected array $navigationItems;
 
     public function __construct()
@@ -16,30 +21,30 @@ class FilamentPageSidebar
     {
         return new static();
     }
-    
 
-    public function setTitle(string $title): static
+
+    public function setTitle(string | Closure $title): static
     {
         $this->title = $title;
 
         return $this;
     }
 
-    public function getTitle(): ?string
+    public function getTitle(): string
     {
-        return $this->title;
+        return $this->evaluate($this->title);
     }
 
-    public function setDescription(string $description): static
+    public function setDescription(string | Closure $description): static
     {
-        $this->description = $description;
+        $this->description = $this->evaluate($description);
 
         return $this;
     }
 
     public function getDescription(): ?string
     {
-        return $this->description;
+        return $this->evaluate($this->description);
     }
 
     public function setNavigationItems(array $navigationItems): static

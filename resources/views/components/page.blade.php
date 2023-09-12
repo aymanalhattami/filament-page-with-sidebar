@@ -37,8 +37,19 @@
                             @endif
 
                             @if ($sidebar->getDescription())
-                                <p class="text-xs text-gray-500">
+                                <p class="text-xs text-gray-500 flex items-center gap-x-1">
                                     {{ $sidebar->getDescription() }}
+
+                                    @if($sidebar->getDescriptionCopyable())
+                                        <x-filament::icon
+                                                x-on:click.prevent="
+                                            window.navigator.clipboard.writeText('{{ $sidebar->getDescription() }}');
+                                            $tooltip('Copied to clipboard', { timeout: 1500 })
+                                        "
+                                                icon="heroicon-o-clipboard-document"
+                                                class="h-4 w-4 cursor-pointer hover:text-gray-700 text-gray-400 dark:text-gray-500 dark:hover:text-gray-400"
+                                        />
+                                    @endif
                                 </p>
                             @endif
                         </div>

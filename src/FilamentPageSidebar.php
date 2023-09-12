@@ -11,6 +11,7 @@ class FilamentPageSidebar
 
     protected string | Closure | null  $title = null;
     protected string | Closure | null  $description = null;
+    protected bool | Closure $descriptionCopyable = false;
     protected array $navigationItems;
 
     public function __construct()
@@ -21,7 +22,6 @@ class FilamentPageSidebar
     {
         return new static();
     }
-
 
     public function setTitle(string | Closure $title): static
     {
@@ -45,6 +45,18 @@ class FilamentPageSidebar
     public function getDescription(): ?string
     {
         return $this->evaluate($this->description);
+    }
+
+    public function setDescriptionCopyable(bool | Closure $copyable): static
+    {
+        $this->descriptionCopyable = $this->evaluate($copyable);
+
+        return $this;
+    }
+
+    public function getDescriptionCopyable(): bool
+    {
+        return $this->descriptionCopyable;
     }
 
     public function setNavigationItems(array $navigationItems): static

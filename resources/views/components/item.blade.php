@@ -8,6 +8,7 @@
     'first' => false,
     'icon' => null,
     'shouldOpenUrlInNewTab' => false,
+    'isWireNavigate' => false,
     'url',
 ])
 
@@ -21,7 +22,7 @@
         href="{{ $url }}"
         @if ($shouldOpenUrlInNewTab)
             target="_blank"
-        @else
+        @elseif ($isWireNavigate)
             wire:navigate
         @endif
         x-on:click="window.matchMedia(`(max-width: 1024px)`).matches && $store.sidebar.close()"

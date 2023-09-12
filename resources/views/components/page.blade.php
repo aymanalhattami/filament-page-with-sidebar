@@ -1,6 +1,6 @@
 @php
     $sidebar = static::getResource()::sidebar($this->record);
-
+    
     $sidebarWidths = config('filament-page-with-sidebar.sidebar_width') ?? [
         'sm' => 12,
         'md' => 3,
@@ -12,15 +12,14 @@
 
 <div class="mt-8">
     <div class="grid grid-cols-12 gap-4 sm:gap-5 lg:gap-6">
-        <div
-                class="col-[--col-span-default]
+        <div class="col-[--col-span-default]
                         sm:col-[--col-span-sm]
                         md:col-[--col-span-md]
                         lg:col-[--col-span-lg]
                         xl:col-[--col-span-xl]
                         2xl:col-[--col-span-2xl]
                         rounded"
-                style="--col-span-default: span 12;
+            style="--col-span-default: span 12;
                         --col-span-sm: span {{ $sidebarWidths['sm'] ?? 12 }};
                         --col-span-md: span {{ $sidebarWidths['md'] ?? 3 }};
                         --col-span-lg: span {{ $sidebarWidths['lg'] ?? 3 }};
@@ -44,13 +43,11 @@
                         </div>
                     @endif
                 </div>
-                <ul class="@if ($sidebar->getTitle() != null || $sidebar->getDescription() != null) mt-4 @endif space-y-2 font-inter font-medium"
-                    wire:ignore>
+                <ul class="@if ($sidebar->getTitle() != null || $sidebar->getDescription() != null) mt-4 @endif space-y-2 font-inter font-medium" wire:ignore>
                     @foreach ($sidebar->getNavigationItems() as $item)
                         @if (!$item->isHidden())
-                            <x-filament-page-with-sidebar::item :active="$item->isActive()" :icon="$item->getIcon()"
-                                :active-icon="$item->getActiveIcon()" :url="$item->getUrl()" :badge="$item->getBadge()" :badgeColor="$item->getBadgeColor()"
-                                :shouldOpenUrlInNewTab="$item->shouldOpenUrlInNewTab()">
+                            <x-filament-page-with-sidebar::item :active="$item->isActive()" :icon="$item->getIcon()" :active-icon="$item->getActiveIcon()"
+                                :url="$item->getUrl()" :badge="$item->getBadge()" :badgeColor="$item->getBadgeColor()" :shouldOpenUrlInNewTab="$item->shouldOpenUrlInNewTab()">
                                 {{ $item->getLabel() }}
                             </x-filament-page-with-sidebar::item>
                         @endif
@@ -59,15 +56,14 @@
             </div>
         </div>
 
-        <div
-                class="col-[--col-span-default]
+        <div class="col-[--col-span-default]
                         sm:col-[--col-span-sm]
                         md:col-[--col-span-md]
                         lg:col-[--col-span-lg]
                         xl:col-[--col-span-xl]
                         2xl:col-[--col-span-2xl]
                         -mt-8"
-                style="--col-span-default: span 12;
+            style="--col-span-default: span 12;
                         --col-span-sm: span {{ 12 - ($sidebarWidths['sm'] ?? 12) }};
                         --col-span-md: span {{ 12 - ($sidebarWidths['md'] ?? 3) }};
                         --col-span-lg: span {{ 12 - ($sidebarWidths['lg'] ?? 3) }};

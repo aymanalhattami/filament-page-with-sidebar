@@ -69,7 +69,9 @@ class FilamentPageSidebar
 
     public function getNavigationItems(): array
     {
-        return $this->navigationItems;
+        return collect($this->navigationItems)
+            ->filter(fn (PageNavigationItem $item): bool => $item->isVisible())
+            ->all();
     }
 
     public function wireNavigate(bool | Closure $isWireNavigate = true): static

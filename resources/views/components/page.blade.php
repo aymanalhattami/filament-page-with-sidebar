@@ -80,7 +80,7 @@
                         --col-span-md: span {{ 12 - ($sidebarWidths['md'] ?? 3) }};
                         --col-span-lg: span {{ 12 - ($sidebarWidths['lg'] ?? 3) }};
                         --col-span-xl: span {{ 12 - ($sidebarWidths['xl'] ?? 3) }};
-                        --col-span-2xl: span {{ 12 - ($sidebarWidths['2xl'] ?? 3) }};">
+                        --col-span-2xl: span {{ 12 - ($sidebarWidths['2xl'] ?? 3) }}; margin-top: -2em;">
             {{ $slot }}
         </div>
     </div>

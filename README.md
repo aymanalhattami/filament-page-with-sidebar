@@ -212,6 +212,28 @@ public static function sidebar(Model $record): FilamentPageSidebar
 // ...
 ```
 
+### Add group
+You may group navigation items, for example 
+```php
+// ...
+
+public static function sidebar(Model $record): FilamentPageSidebar
+{
+    return FilamentPageSidebar::make()
+        ->setNavigationItems([
+            PageNavigationItem::make('Change Password')
+                ->url(function () use ($record) {
+                    return static::getUrl('password.change', ['record' => $record->id]);
+                })
+                ->group('Manage User')
+
+            // ... more items
+        ]);
+}
+
+// ...
+```
+
 ### Set active item
 You can make an item active "has a different background color" by using isActiveWhen method, for example 
 ```php

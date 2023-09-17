@@ -61,7 +61,7 @@
                         @if (!$item->isHidden())
                             <x-filament-page-with-sidebar::item :active="$item->isActive()" :icon="$item->getIcon()"
                                 :active-icon="$item->getActiveIcon()" :url="$item->getUrl()" :badge="$item->getBadge()" :badgeColor="$item->getBadgeColor()"
-                                :shouldOpenUrlInNewTab="$item->shouldOpenUrlInNewTab()">
+                                :shouldOpenUrlInNewTab="$item->shouldOpenUrlInNewTab()" :is-wire-navigate="$sidebar->isWireNavigate()">
                                 {{ $item->getLabel() }}
                             </x-filament-page-with-sidebar::item>
                         @endif

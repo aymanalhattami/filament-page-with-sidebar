@@ -50,14 +50,14 @@ class FilamentPageSidebar
 
     public function setDescriptionCopyable(bool | Closure $copyable): static
     {
-        $this->descriptionCopyable = $this->evaluate($copyable);
+        $this->descriptionCopyable = $copyable;
 
         return $this;
     }
 
     public function getDescriptionCopyable(): bool
     {
-        return $this->descriptionCopyable;
+        return $this->evaluate($this->descriptionCopyable);
     }
 
     public function setNavigationItems(array $navigationItems): static

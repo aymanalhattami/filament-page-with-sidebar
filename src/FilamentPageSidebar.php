@@ -22,7 +22,6 @@ class FilamentPageSidebar
         return new static();
     }
 
-
     public function setTitle(string | Closure $title): static
     {
         $this->title = $title;
@@ -37,7 +36,7 @@ class FilamentPageSidebar
 
     public function setDescription(string | Closure $description): static
     {
-        $this->description = $this->evaluate($description);
+        $this->description = $description;
 
         return $this;
     }

@@ -30,13 +30,13 @@
                     @if ($sidebar->getTitle() != null || $sidebar->getDescription() != null)
                         <div class="w-full">
                             @if ($sidebar->getTitle() != null)
-                                <h3 class="text-base font-medium text-slate-700 dark:text-navy-100 truncate block">
+                                <h3 class="text-base font-medium text-slate-700 dark:text-white truncate block">
                                     {{ $sidebar->getTitle() }}
                                 </h3>
                             @endif
 
                             @if ($sidebar->getDescription())
-                                <p class="text-xs text-gray-500 flex items-center gap-x-1">
+                                <p class="text-xs text-gray-400 flex items-center gap-x-1">
                                     {{ $sidebar->getDescription() }}
 
                                     @if($sidebar->getDescriptionCopyable())

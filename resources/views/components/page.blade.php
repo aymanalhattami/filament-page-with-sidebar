@@ -54,11 +54,13 @@
                     @endif
                 </div>
                 <ul class="@if ($sidebar->getTitle() != null || $sidebar->getDescription() != null) mt-4 @endif space-y-2 font-inter font-medium" wire:ignore>
-                    @foreach ($sidebar->getNavigationItems() as $item)
-                        <x-filament-page-with-sidebar::item :active="$item->isActive()" :icon="$item->getIcon()" :active-icon="$item->getActiveIcon()"
-                            :url="$item->getUrl()" :badge="$item->getBadge()" :badgeColor="$item->getBadgeColor()" :shouldOpenUrlInNewTab="$item->shouldOpenUrlInNewTab()" :is-wire-navigate="$sidebar->isWireNavigate()">
-                            {{ $item->getLabel() }}
-                        </x-filament-page-with-sidebar::item>
+                    @foreach ($sidebar->getNavigationItems() as $group)
+                    <x-filament-page-with-sidebar::group
+                    :collapsible="$group->isCollapsible()"
+                    :icon="$group->getIcon()"
+                    :items="$group->getItems()"
+                    :label="$group->getLabel()"
+                />
                     @endforeach
                 </ul>
             </div>

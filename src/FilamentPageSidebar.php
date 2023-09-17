@@ -3,6 +3,9 @@
 namespace AymanAlhattami\FilamentPageWithSidebar;
 
 use Closure;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Collection;
+use Filament\Navigation\NavigationGroup;
 use Filament\Support\Concerns\EvaluatesClosures;
 
 class FilamentPageSidebar
@@ -71,6 +74,64 @@ class FilamentPageSidebar
     {
         return collect($this->navigationItems)
             ->filter(fn (PageNavigationItem $item): bool => $item->isVisible())
+            ->sortBy(fn (PageNavigationItem $item): int => $item->getSort())
+            ->groupBy(fn (PageNavigationItem $item): ?string => $item->getGroup())
+            ->map(function (Collection $items, ?string $groupIndex): NavigationGroup {
+                if (blank($groupIndex)) {
+                    return NavigationGroup::make()->items($items);
+                }
+
+                $registeredGroup = collect([])
+                    ->first(function (NavigationGroup | string $registeredGroup, string | int $registeredGroupIndex) use ($groupIndex) {
+                        if ($registeredGroupIndex === $groupIndex) {
+                            return true;
+                        }
+
+                        if ($registeredGroup === $groupIndex) {
+                            return true;
+                        }
+
+                        if (! $registeredGroup instanceof NavigationGroup) {
+                            return false;
+                        }
+
+                        return $registeredGroup->getLabel() === $groupIndex;
+                    });
+
+                if ($registeredGroup instanceof NavigationGroup) {
+                    return $registeredGroup->items($items);
+                }
+
+                return NavigationGroup::make($registeredGroup ?? $groupIndex)
+                    ->items($items);
+            })
+            ->sortBy(function (NavigationGroup $group, ?string $groupIndex): int {
+                if (blank($group->getLabel())) {
+                    return -1;
+                }
+
+                $registeredGroups = [];
+
+                $groupsToSearch = $registeredGroups;
+
+                if (Arr::first($registeredGroups) instanceof NavigationGroup) {
+                    $groupsToSearch = [
+                        ...array_keys($registeredGroups),
+                        ...array_map(fn (NavigationGroup $registeredGroup): string => $registeredGroup->getLabel(), array_values($registeredGroups)),
+                    ];
+                }
+
+                $sort = array_search(
+                    $groupIndex,
+                    $groupsToSearch,
+                );
+
+                if ($sort === false) {
+                    return count($registeredGroups);
+                }
+
+                return $sort;
+            })
             ->all();
     }
 

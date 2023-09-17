@@ -11,7 +11,9 @@ class FilamentPageSidebar
 
     protected string | Closure | null  $title = null;
     protected string | Closure | null  $description = null;
+    protected bool | Closure $descriptionCopyable = false;
     protected array $navigationItems;
+    protected bool | Closure $isWireNavigate = false;
 
     public function __construct()
     {
@@ -46,6 +48,18 @@ class FilamentPageSidebar
         return $this->evaluate($this->description);
     }
 
+    public function setDescriptionCopyable(bool | Closure $copyable): static
+    {
+        $this->descriptionCopyable = $this->evaluate($copyable);
+
+        return $this;
+    }
+
+    public function getDescriptionCopyable(): bool
+    {
+        return $this->descriptionCopyable;
+    }
+
     public function setNavigationItems(array $navigationItems): static
     {
         $this->navigationItems = $navigationItems;
@@ -56,5 +70,17 @@ class FilamentPageSidebar
     public function getNavigationItems(): array
     {
         return $this->navigationItems;
+    }
+
+    public function wireNavigate(bool | Closure $isWireNavigate = true): static
+    {
+        $this->isWireNavigate = $this->evaluate($isWireNavigate);
+
+        return $this;
+    }
+
+    public function isWireNavigate(): bool
+    {
+        return $this->isWireNavigate;
     }
 }

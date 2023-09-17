@@ -8,6 +8,7 @@
     'first' => false,
     'icon' => null,
     'shouldOpenUrlInNewTab' => false,
+    'isWireNavigate' => false,
     'url',
 ])
 
@@ -18,7 +19,12 @@
     ])
 >
     <a
-        {{ \Filament\Support\generate_href_html($url, $shouldOpenUrlInNewTab) }}
+        href="{{ $url }}"
+        @if ($shouldOpenUrlInNewTab)
+            target="_blank"
+        @elseif ($isWireNavigate)
+            wire:navigate
+        @endif
         x-on:click="window.matchMedia(`(max-width: 1024px)`).matches && $store.sidebar.close()"
         @if (filament()->isSidebarCollapsibleOnDesktop())
             x-data="{ tooltip: false }"

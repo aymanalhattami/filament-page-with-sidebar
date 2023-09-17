@@ -36,8 +36,19 @@
                             @endif
 
                             @if ($sidebar->getDescription())
-                                <p class="text-xs text-gray-500">
+                                <p class="text-xs text-gray-500 flex items-center gap-x-1">
                                     {{ $sidebar->getDescription() }}
+
+                                    @if($sidebar->getDescriptionCopyable())
+                                        <x-filament::icon
+                                                x-on:click.prevent="
+                                            window.navigator.clipboard.writeText('{{ $sidebar->getDescription() }}');
+                                            $tooltip('Copied to clipboard', { timeout: 1500 })
+                                        "
+                                                icon="heroicon-o-clipboard-document"
+                                                class="h-4 w-4 cursor-pointer hover:text-gray-700 text-gray-400 dark:text-gray-500 dark:hover:text-gray-400"
+                                        />
+                                    @endif
                                 </p>
                             @endif
                         </div>
@@ -46,8 +57,9 @@
                 <ul class="@if ($sidebar->getTitle() != null || $sidebar->getDescription() != null) mt-4 @endif space-y-2 font-inter font-medium" wire:ignore>
                     @foreach ($sidebar->getNavigationItems() as $item)
                         @if (!$item->isHidden())
-                            <x-filament-page-with-sidebar::item :active="$item->isActive()" :icon="$item->getIcon()" :active-icon="$item->getActiveIcon()"
-                                :url="$item->getUrl()" :badge="$item->getBadge()" :badgeColor="$item->getBadgeColor()" :shouldOpenUrlInNewTab="$item->shouldOpenUrlInNewTab()">
+                            <x-filament-page-with-sidebar::item :active="$item->isActive()" :icon="$item->getIcon()"
+                                :active-icon="$item->getActiveIcon()" :url="$item->getUrl()" :badge="$item->getBadge()" :badgeColor="$item->getBadgeColor()"
+                                :shouldOpenUrlInNewTab="$item->shouldOpenUrlInNewTab()" :is-wire-navigate="$sidebar->isWireNavigate()">
                                 {{ $item->getLabel() }}
                             </x-filament-page-with-sidebar::item>
                         @endif

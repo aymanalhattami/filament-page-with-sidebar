@@ -16,7 +16,6 @@ class FilamentPageSidebar
     protected string | Closure | null  $description = null;
     protected bool | Closure $descriptionCopyable = false;
     protected array $navigationItems;
-    protected bool | Closure $isWireNavigate = false;
 
     public function __construct()
     {
@@ -133,17 +132,5 @@ class FilamentPageSidebar
                 return $sort;
             })
             ->all();
-    }
-
-    public function wireNavigate(bool | Closure $isWireNavigate = true): static
-    {
-        $this->isWireNavigate = $this->evaluate($isWireNavigate);
-
-        return $this;
-    }
-
-    public function isWireNavigate(): bool
-    {
-        return $this->isWireNavigate;
     }
 }

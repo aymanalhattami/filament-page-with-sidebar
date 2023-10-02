@@ -141,28 +141,6 @@ If you wan to use custom view, you can still overwrite the default value with ``
 
 ## More Options
 
-### Enable Wire navigation
-Add wireNavigate to make navigation similar to an SPA (uses wire:navigate under the hood).
-```php
-// ...
-
-public static function sidebar(Model $record): FilamentPageSidebar
-{
-    return FilamentPageSidebar::make()
-        ->wireNavigate()
-        ->setNavigationItems([
-            PageNavigationItem::make(__('User Dashboard'))
-                ->url(function () use ($record) {
-                    return static::getUrl('dashboard', ['record' => $record->id]);
-                }),
-
-            // ... more items
-        ]);
-}
-
-// ...
-```
-
 ### Set title and description for sidebar
 You can set the title or description by using setTitle, setDescription, setDescriptionCopyable methods for the sidebar that will be at the beginning of the sidebar on the top, for example 
 ```php

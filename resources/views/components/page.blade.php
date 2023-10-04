@@ -1,6 +1,10 @@
 @php
-    $sidebar = static::getResource()::sidebar($this->record);
-    
+    if(property_exists($this, "resource")) {
+        $sidebar = static::getResource()::sidebar($this->record);
+    } else {
+        $sidebar = static::sidebar();
+    }
+
     $sidebarWidths = config('filament-page-with-sidebar.sidebar_width') ?? [
         'sm' => 12,
         'md' => 3,

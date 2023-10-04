@@ -4,7 +4,13 @@
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/aymanalhattami/filament-page-with-sidebar.svg?style=flat-square)](https://packagist.org/packages/aymanalhattami/filament-page-with-sidebar)
 [![Total Downloads](https://img.shields.io/packagist/dt/aymanalhattami/filament-page-with-sidebar.svg?style=flat-square)](https://packagist.org/packages/aymanalhattami/filament-page-with-sidebar)
 
-Organize resource pages in the sidebar in order to make navigation between resource pages more comfortable.
+Organize pages in the sidebar in order to make navigation between pages more comfortable.
+
+> **Note:**
+> It supports both pages and resource pages.
+
+>  **Note:**
+> For [Filament 2.x](https://filamentphp.com/docs/2.x/admin/installation)  use [version 1.x](https://github.com/aymanalhattami/filament-page-with-sidebar/tree/1.x)
 
 
 ## Screenshots
@@ -16,8 +22,6 @@ RTL (Right to Left)
 
 Please check out this video by Povilas Korop (Laravel Daily) to learn more about our package: [link](https://www.youtube.com/watch?v=J7dH8O-YBnY)
 
-> **Note:**
-> For [Filament 2.x](https://filamentphp.com/docs/2.x/admin/installation)  use [version 1.x](https://github.com/aymanalhattami/filament-page-with-sidebar/tree/1.x)
 
 ## Installation
 ```bash
@@ -29,7 +33,7 @@ optionally you can publish config, views and components files
 php artisan vendor:publish --tag="filament-page-with-sidebar-config"
 php artisan vendor:publish --tag="filament-page-with-sidebar-views"
 ```
-## Usage
+## Usage with Resource Pages
 1. First you need to prepare resource pages, for example, we have an edit page, view page, manage page, change password page, and dashboar page for UserResource
 ```php
 use Filament\Resources\Resource;
@@ -136,8 +140,60 @@ class ViewUser extends ViewRecord
 }
 ```
 
-If you wan to use custom view, you can still overwrite the default value with ```protected static string $hasSidebar = false;``` and ```protected static $view = 'filament.[...].user-resource.pages.view-user';```
+If you want to use custom view, you can still overwrite the default value with ```protected static string $hasSidebar = false;``` and ```protected static $view = 'filament.[...].user-resource.pages.view-user';```
 
+
+## Usage with Page
+1. Add the trait ```AymanAlhattami\FilamentPageWithSidebar\Traits\HasPageSidebar``` on any page you want the sidebar included.
+2. Then, define the sidebar method as static in the page
+
+```php
+// ...
+use AymanAlhattami\FilamentPageWithSidebar\Traits\HasPageSidebar;
+use Filament\Pages\Page;
+
+class GeneralSettings extends Page
+{
+    use HasPageSidebar; // use this trait to activate the Sidebar
+
+    // ...
+    public static function sidebar(): FilamentPageSidebar
+    {
+        return FilamentPageSidebar::make()
+            ->setTitle('Application Settings')
+            ->setDescription('general, admin, website, sms, payments, notifications, shipping')
+            ->setNavigationItems([
+                PageNavigationItem::make('General Settings')
+                    ->translateLabel()
+                    ->url(GeneralSettings::getUrl())
+                    ->icon('heroicon-o-cog-6-tooth')
+                    ->isActiveWhen(function () {
+                        return request()->routeIs(GeneralSettings::getRouteName());
+                    })
+                    ->visible(true),
+                PageNavigationItem::make('Admin Panel Settings')
+                    ->translateLabel()
+                    ->url(AdminPanelSettings::getUrl())
+                    ->icon('heroicon-o-cog-6-tooth')
+                    ->isActiveWhen(function () {
+                        return request()->routeIs(AdminPanelSettings::getRouteName());
+                    })
+                    ->visible(true),
+                PageNavigationItem::make('Web Settings')
+                    ->translateLabel()
+                    ->url(WebsiteSettings::getUrl())
+                    ->icon('heroicon-o-cog-6-tooth')
+                    ->isActiveWhen(function () {
+                        return request()->routeIs(WebsiteSettings::getRouteName());
+                    })
+                    ->visible(true),
+                // ...
+            ]);
+    }
+    
+    // ...
+}
+```
 
 ## More Options
 
@@ -234,7 +290,7 @@ public static function sidebar(Model $record): FilamentPageSidebar
 ```
 
 ### Hide the item
-You can hide an item from the sidebar by using isHiddenWhen method, for example 
+You can control the visibility of an item from the sidebar by using visible method, for example 
 ```php
 // ...
 
@@ -246,7 +302,7 @@ public static function sidebar(Model $record): FilamentPageSidebar
                 ->url(function () use ($record) {
                     return static::getUrl('password.change', ['record' => $record->id]);
                 })
-                ->isHiddenWhen(false)
+                ->visible(false)
             // ... more items
         ]);
 }

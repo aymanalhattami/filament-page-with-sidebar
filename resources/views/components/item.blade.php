@@ -17,7 +17,10 @@
         'fi-active fi-sidebar-item-active' => $active,
     ])>
 
-    <a {{ \Filament\Support\generate_href_html($url, $shouldOpenUrlInNewTab) }}
+    <a href="{{ $url }}"
+       @if ($shouldOpenUrlInNewTab)
+           target="_blank"
+       @endif
         x-on:click="window.matchMedia(`(max-width: 1024px)`).matches && $store.sidebar.close()"
         @class([
             'fi-sidebar-item-button relative flex items-center justify-center gap-x-3 rounded-lg px-2 py-2 text-sm outline-none transition duration-75 hover:bg-gray-100 focus:bg-gray-100 dark:hover:bg-white/5 dark:focus:bg-white/5',

@@ -81,8 +81,7 @@
 @else
     <x-filament-page-with-sidebar::topbar
             :navigation="$sidebar->getNavigationItems()"
-            :sidebar="$sidebar"
-    />
+            :sidebar="$sidebar"/>
 
     {{ $slot }}
 @endif

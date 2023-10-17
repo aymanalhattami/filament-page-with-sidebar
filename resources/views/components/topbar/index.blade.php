@@ -1,5 +1,4 @@
 @props([
-    'navigation',
     'sidebar',
 ])
 
@@ -16,19 +15,13 @@
             </div>
         @endif
 
-        @if (filament()->hasNavigation())
+        @if (count($sidebar->getNavigationItems()))
             <ul class="me-4 hidden items-center gap-x-4 lg:flex">
-                @foreach ($navigation as $group)
+                @foreach ($sidebar->getNavigationItems() as $group)
                     @if ($groupLabel = $group->getLabel())
-                        <x-filament::dropdown
-                                placement="bottom-start"
-                                teleport
-                        >
+                        <x-filament::dropdown placement="bottom-start" teleport>
                             <x-slot name="trigger">
-                                <x-filament-panels::topbar.item
-                                        :active="$group->isActive()"
-                                        :icon="$group->getIcon()"
-                                >
+                                <x-filament-panels::topbar.item :active="$group->isActive()" :icon="$group->getIcon()">
                                     {{ $groupLabel }}
                                 </x-filament-panels::topbar.item>
                             </x-slot>
@@ -46,8 +39,7 @@
                                             :href="$item->getUrl()"
                                             :icon="$item->isActive() ? ($item->getActiveIcon() ?? $icon) : $icon"
                                             tag="a"
-                                            :target="$shouldOpenUrlInNewTab ? '_blank' : null"
-                                    >
+                                            :target="$shouldOpenUrlInNewTab ? '_blank' : null">
                                         {{ $item->getLabel() }}
                                     </x-filament::dropdown.list.item>
                                 @endforeach
@@ -62,8 +54,7 @@
                                     :badge-color="$item->getBadgeColor()"
                                     :icon="$item->getIcon()"
                                     :should-open-url-in-new-tab="$item->shouldOpenUrlInNewTab()"
-                                    :url="$item->getUrl()"
-                            >
+                                    :url="$item->getUrl()">
                                 {{ $item->getLabel() }}
                             </x-filament-panels::topbar.item>
                         @endforeach

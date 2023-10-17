@@ -79,7 +79,10 @@
         </div>
     </div>
 @else
-    <x-filament-page-with-sidebar::topbar :navigation="$sidebar->getNavigationItems()"></x-filament-page-with-sidebar::topbar>
+    <x-filament-page-with-sidebar::topbar
+            :navigation="$sidebar->getNavigationItems()"
+            :sidebar="$sidebar"
+    />
 
     {{ $slot }}
 @endif

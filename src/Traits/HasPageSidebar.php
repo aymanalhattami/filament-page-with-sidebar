@@ -2,6 +2,8 @@
 
 namespace AymanAlhattami\FilamentPageWithSidebar\Traits;
 
+use AymanAlhattami\FilamentPageWithSidebar\FilamentPageSidebar;
+
 trait HasPageSidebar
 {
     /**
@@ -45,5 +47,25 @@ trait HasPageSidebar
         }
 
         throw new \Exception('No view detected for the Sidebar. Implement Filament\Pages\Page object with valid static $view');
+    }
+
+    public function getSidebar(): FilamentPageSidebar
+    {
+        if(property_exists($this, "resource")) {
+            return static::getResource()::sidebar($this->record);
+        } else {
+            return static::sidebar();
+        }
+    }
+
+    public function getSidebarWidths(): array
+    {
+        return config('filament-page-with-sidebar.sidebar_width') ?? [
+            'sm' => 12,
+            'md' => 3,
+            'lg' => 3,
+            'xl' => 3,
+            '2xl' => 3,
+        ];
     }
 }

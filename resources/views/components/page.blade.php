@@ -1,17 +1,6 @@
 @php
-    if(property_exists($this, "resource")) {
-        $sidebar = static::getResource()::sidebar($this->record);
-    } else {
-        $sidebar = static::sidebar();
-    }
-
-    $sidebarWidths = config('filament-page-with-sidebar.sidebar_width') ?? [
-        'sm' => 12,
-        'md' => 3,
-        'lg' => 3,
-        'xl' => 3,
-        '2xl' => 3,
-    ];
+    $sidebar = $this->getSidebar();
+    $sidebarWidths = $this->getSidebarWidths();
 @endphp
 
 <div class="mt-8">

@@ -145,4 +145,18 @@ class FilamentPageSidebar
     {
         return $this->pageNavigationLayoutEnum;
     }
+
+    public function sidebarNavigation(): static
+    {
+        $this->pageNavigationLayoutEnum = PageNavigationLayoutEnum::Sidebar;
+
+        return $this;
+    }
+
+    public function topbarNavigation(): static
+    {
+        $this->pageNavigationLayoutEnum = PageNavigationLayoutEnum::Topbar;
+
+        return $this;
+    }
 }

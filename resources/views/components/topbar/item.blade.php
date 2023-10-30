@@ -14,7 +14,6 @@
 
 <li
         @class([
-            'fi-topbar-item overflow-hidden',
             'fi-topbar-item-active' => $active,
         ])
 >
@@ -34,16 +33,16 @@
         <x-filament::icon
                 :icon="($active && $activeIcon) ? $activeIcon : $icon"
                 @class([
-                    'fi-topbar-item-icon h-5 w-5',
+                    'fi-topbar-item-icon h-5 w-5 flex-shrink-0',
                     'text-gray-400 dark:text-gray-500' => ! $active,
                     'text-primary-500' => $active,
                 ])
         />
     @endif
 
-    <span>
-            {{ $slot }}
-        </span>
+    <span class="whitespace-nowrap">
+        {{ $slot }}
+    </span>
 
     @if (filled($badge))
         <x-filament::badge :color="$badgeColor" size="sm">

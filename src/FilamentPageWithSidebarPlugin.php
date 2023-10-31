@@ -7,6 +7,11 @@ use Filament\Panel;
 
 class FilamentPageWithSidebarPlugin implements Plugin
 {
+    public static function make(): static
+    {
+        return app(static::class);
+    }
+
     public function getId(): string
     {
         return 'filament-page-with-sidebar';

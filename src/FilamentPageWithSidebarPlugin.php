@@ -21,4 +21,12 @@ class FilamentPageWithSidebarPlugin implements Plugin
     {
         // TODO: Implement boot() method.
     }
+
+    public static function get(): static
+    {
+        /** @var static $plugin */
+        $plugin = filament(app(static::class)->getId());
+
+        return $plugin;
+    }
 }

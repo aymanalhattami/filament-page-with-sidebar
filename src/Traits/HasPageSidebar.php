@@ -2,8 +2,6 @@
 
 namespace AymanAlhattami\FilamentPageWithSidebar\Traits;
 
-use AymanAlhattami\FilamentPageWithSidebar\FilamentPageSidebar;
-
 trait HasPageSidebar
 {
     /**
@@ -53,9 +51,9 @@ trait HasPageSidebar
     {
         if(property_exists($this, "resource")) {
             return static::getResource()::sidebar($this->record);
-        } else {
-            return static::sidebar();
         }
+
+        return static::sidebar();
     }
 
     public function getSidebarWidths(): array
@@ -68,4 +66,5 @@ trait HasPageSidebar
             '2xl' => 3,
         ];
     }
+
 }

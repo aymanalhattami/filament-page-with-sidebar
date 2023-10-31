@@ -2,6 +2,7 @@
 
 namespace AymanAlhattami\FilamentPageWithSidebar;
 
+use AymanAlhattami\FilamentPageWithSidebar\Enums\PageNavigationLayoutEnum;
 use Closure;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
@@ -16,6 +17,7 @@ class FilamentPageSidebar
     protected string | Closure | null  $description = null;
     protected bool | Closure $descriptionCopyable = false;
     protected array $navigationItems;
+    protected PageNavigationLayoutEnum $pageNavigationLayoutEnum = PageNavigationLayoutEnum::Topbar;
 
     public function __construct()
     {
@@ -132,5 +134,29 @@ class FilamentPageSidebar
                 return $sort;
             })
             ->all();
+    }
+
+    public function setPageNavigationLayout(PageNavigationLayoutEnum $pageNavigationLayoutEnum)
+    {
+        return $this->pageNavigationLayoutEnum = $pageNavigationLayoutEnum;
+    }
+
+    public function getPageNavigationLayout(): PageNavigationLayoutEnum
+    {
+        return $this->pageNavigationLayoutEnum;
+    }
+
+    public function sidebarNavigation(): static
+    {
+        $this->pageNavigationLayoutEnum = PageNavigationLayoutEnum::Sidebar;
+
+        return $this;
+    }
+
+    public function topbarNavigation(): static
+    {
+        $this->pageNavigationLayoutEnum = PageNavigationLayoutEnum::Topbar;
+
+        return $this;
     }
 }

@@ -225,6 +225,39 @@ public static function sidebar(Model $record): FilamentPageSidebar
 // ...
 ```
 
+### Set navigation layout
+You can set navigation as sidebar by using ```->sidebarNavigation()``` or as topbar by using ```->topbarNavigation()```. The default layout is sidebar
+
+#### Sidebar
+![filament-page-with-sidebar](https://raw.githubusercontent.com/aymanalhattami/filament-page-with-sidebar/main/images/sidebar.png)
+```php
+// ...
+
+public static function sidebar(Model $record): FilamentPageSidebar
+{
+    return FilamentPageSidebar::make()
+        ->sidebarNavigation();
+        // 
+}
+
+// ...
+```
+
+#### Topbar
+![filament-page-with-sidebar](https://raw.githubusercontent.com/aymanalhattami/filament-page-with-sidebar/main/images/topbar.png)
+```php
+// ...
+
+public static function sidebar(Model $record): FilamentPageSidebar
+{
+    return FilamentPageSidebar::make()
+        ->topbarNavigation();
+        // 
+}
+
+// ...
+```
+
 ### Add icon
 You can add an icon to the item by using the icon method, for example 
 ```php

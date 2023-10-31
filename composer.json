@@ -5,7 +5,7 @@
     "require": {
         "filament/filament": "^3.0",
         "spatie/laravel-package-tools": "^1.0",
-        "laravel/framework": "10.x-dev"
+        "laravel/framework": "^10.0"
     },
     "license": "MIT",
     "autoload": {

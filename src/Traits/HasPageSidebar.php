@@ -7,7 +7,7 @@ trait HasPageSidebar
     /**
      * Activate or not the automatic sidebar to the page
      * If you change it to FALSE then add manually the $view parameter
-     * 
+     *
      * @var boolean
      */
     public static bool $hasSidebar = true;
@@ -29,7 +29,7 @@ trait HasPageSidebar
     /**
      * public function getIncludedSidebarView
      * Return the view that will be used in the sidebar proxy.
-     * 
+     *
      * @return string \Filament\Pages\Page View to be included
      */
     public function getIncludedSidebarView(): string
@@ -47,13 +47,14 @@ trait HasPageSidebar
         throw new \Exception('No view detected for the Sidebar. Implement Filament\Pages\Page object with valid static $view');
     }
 
-    public function getSidebar(): FilamentPageSidebar
+    public function getSidebar()
     {
         if(property_exists($this, "resource")) {
             return static::getResource()::sidebar($this->record);
+        } else {
+            return static::sidebar();
         }
 
-        return static::sidebar();
     }
 
     public function getSidebarWidths(): array

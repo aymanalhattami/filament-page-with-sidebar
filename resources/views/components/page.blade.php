@@ -1,5 +1,6 @@
 @php
     $sidebar = $this->getSidebar();
+    $sidebarWidths = $this->getSidebarWidths();
 @endphp
 
 <div>

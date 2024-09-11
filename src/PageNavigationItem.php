@@ -24,4 +24,9 @@ class PageNavigationItem extends NavigationItem
             ? __($label)
             : $label;
     }
+
+    public function isWireNavigate(): bool
+    {
+        
+    }
 }

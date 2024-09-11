@@ -20,13 +20,8 @@ class PageNavigationItem extends NavigationItem
     {
         $label = parent::getLabel();
 
-        return (is_string($label) && $this->shouldTranslateLabel)
+        return ($this->shouldTranslateLabel)
             ? __($label)
             : $label;
-    }
-
-    public function isWireNavigate(): bool
-    {
-        
     }
 }

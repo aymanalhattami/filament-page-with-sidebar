@@ -69,11 +69,11 @@
                         2xl:col-[--col-span-2xl]
                         -mt-8"
                      style="--col-span-default: span 12;
-                        --col-span-sm: span {{ 12 - ($sidebarWidths['sm'] ?? 12) }};
-                        --col-span-md: span {{ 12 - ($sidebarWidths['md'] ?? 3) }};
-                        --col-span-lg: span {{ 12 - ($sidebarWidths['lg'] ?? 3) }};
-                        --col-span-xl: span {{ 12 - ($sidebarWidths['xl'] ?? 3) }};
-                        --col-span-2xl: span {{ 12 - ($sidebarWidths['2xl'] ?? 3) }}; margin-top: -2em;">
+                        --col-span-sm: span {{ $sidebarWidths['sm'] == 12 ? 12 : 12 - ($sidebarWidths['sm'] ?? 3) }};
+                        --col-span-md: span {{ $sidebarWidths['md'] == 12 ? 12 : 12 - ($sidebarWidths['md'] ?? 3) }};
+                        --col-span-lg: span {{ $sidebarWidths['lg'] == 12 ? 12 : 12 - ($sidebarWidths['lg'] ?? 3) }};
+                        --col-span-xl: span {{ $sidebarWidths['xl'] == 12 ? 12 : 12 - ($sidebarWidths['xl'] ?? 3) }};
+                        --col-span-2xl: span {{ $sidebarWidths['2xl'] == 12 ? 12 : 12 - ($sidebarWidths['2xl'] ?? 3) }}; margin-top: -2em;">
                     {{ $slot }}
                 </div>
             </div>

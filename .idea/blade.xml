@@ -97,6 +97,7 @@
       <data directive="@livewireScriptConfig" />
       <data directive="@livewireScripts" />
       <data directive="@livewireStyles" />
+      <data directive="@measure" />
       <data directive="@method" injection="true" prefix="&lt;?php&#10;echo method_field(" suffix="); ?&gt;" />
       <data directive="@once" />
       <data directive="@overwrite" />
@@ -110,6 +111,7 @@
       <data directive="@push" injection="true" prefix="&lt;?php&#10;$__env-&gt;startPush(" suffix="); ?&gt;" />
       <data directive="@pushif" injection="true" prefix="&lt;?php&#10;$__pushif_args = explode(','," suffix=", 2); if({$__pushif_args[0]}): $__env-&gt;startPush({$__pushif_args[1]}); ?&gt;" />
       <data directive="@pushonce" injection="true" prefix="&lt;?php&#10;$__php_storm_push_once_params = [" suffix="]; if (!$__env-&gt;hasRenderedOnce($__php_storm_push_once_params[1])): $__env-&gt;markAsRenderedOnce($__php_storm_push_once_params[1]); $__env-&gt;startPush($__php_storm_push_once_params[0]); ?&gt;" />
+      <data directive="@ray" injection="true" prefix="&lt;?php ray(" suffix="); ?&gt;" />
       <data directive="@readonly" injection="true" prefix="&lt;?php&#10;if(" suffix="): echo 'readonly'; endif; ?&gt;" />
       <data directive="@required" injection="true" prefix="&lt;?php&#10;if(" suffix="): echo 'required'; endif; ?&gt;" />
       <data directive="@script" />
@@ -133,6 +135,7 @@
       <data directive="@viteReactRefresh" />
       <data directive="@vitereactrefresh" />
       <data directive="@while" injection="true" prefix="&lt;?php&#10;while(" suffix="): ?&gt;" />
+      <data directive="@xray" />
       <data directive="@yield" injection="true" prefix="&lt;?php&#10;echo $__env-&gt;yieldContent(" suffix="); ?&gt;" />
     </directives>
   </component>

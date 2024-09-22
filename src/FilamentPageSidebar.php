@@ -4,31 +4,33 @@ namespace AymanAlhattami\FilamentPageWithSidebar;
 
 use AymanAlhattami\FilamentPageWithSidebar\Enums\PageNavigationLayoutEnum;
 use Closure;
-use Illuminate\Support\Arr;
-use Illuminate\Support\Collection;
 use Filament\Navigation\NavigationGroup;
 use Filament\Support\Concerns\EvaluatesClosures;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Collection;
 
 class FilamentPageSidebar
 {
     use EvaluatesClosures;
 
-    protected string | Closure | null  $title = null;
-    protected string | Closure | null  $description = null;
-    protected bool | Closure $descriptionCopyable = false;
+    protected string|Closure|null $title = null;
+
+    protected string|Closure|null $description = null;
+
+    protected bool|Closure $descriptionCopyable = false;
+
     protected array $navigationItems;
+
     protected PageNavigationLayoutEnum $pageNavigationLayoutEnum = PageNavigationLayoutEnum::Sidebar;
 
-    public function __construct()
-    {
-    }
+    public function __construct() {}
 
     public static function make(): static
     {
-        return new static();
+        return new static;
     }
 
-    public function setTitle(string | Closure $title): static
+    public function setTitle(string|Closure $title): static
     {
         $this->title = $title;
 
@@ -40,7 +42,7 @@ class FilamentPageSidebar
         return $this->evaluate($this->title);
     }
 
-    public function setDescription(string | Closure $description): static
+    public function setDescription(string|Closure $description): static
     {
         $this->description = $description;
 
@@ -52,7 +54,7 @@ class FilamentPageSidebar
         return $this->evaluate($this->description);
     }
 
-    public function setDescriptionCopyable(bool | Closure $copyable = true): static
+    public function setDescriptionCopyable(bool|Closure $copyable = true): static
     {
         $this->descriptionCopyable = $copyable;
 
@@ -83,7 +85,7 @@ class FilamentPageSidebar
                 }
 
                 $registeredGroup = collect([])
-                    ->first(function (NavigationGroup | string $registeredGroup, string | int $registeredGroupIndex) use ($groupIndex) {
+                    ->first(function (NavigationGroup|string $registeredGroup, string|int $registeredGroupIndex) use ($groupIndex) {
                         if ($registeredGroupIndex === $groupIndex) {
                             return true;
                         }

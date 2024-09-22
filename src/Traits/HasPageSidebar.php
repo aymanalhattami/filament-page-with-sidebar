@@ -7,8 +7,6 @@ trait HasPageSidebar
     /**
      * Activate or not the automatic sidebar to the page
      * If you change it to FALSE then add manually the $view parameter
-     *
-     * @var boolean
      */
     public static bool $hasSidebar = true;
 
@@ -49,7 +47,7 @@ trait HasPageSidebar
 
     public function getSidebar()
     {
-        if(property_exists($this, "resource")) {
+        if (property_exists($this, 'resource')) {
             return static::getResource()::sidebar($this->record);
         } else {
             return static::sidebar();
@@ -67,5 +65,4 @@ trait HasPageSidebar
             '2xl' => 3,
         ];
     }
-
 }

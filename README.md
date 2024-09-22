@@ -4,6 +4,8 @@
 [![StandWithPalestine](https://raw.githubusercontent.com/TheBSD/StandWithPalestine/main/badges/StandWithPalestine.svg)](https://github.com/TheBSD/StandWithPalestine/blob/main/docs/README.md)
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/aymanalhattami/filament-page-with-sidebar.svg?style=flat-square)](https://packagist.org/packages/aymanalhattami/filament-page-with-sidebar)
 [![Total Downloads](https://img.shields.io/packagist/dt/aymanalhattami/filament-page-with-sidebar.svg?style=flat-square)](https://packagist.org/packages/aymanalhattami/filament-page-with-sidebar)
+[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/aymanalhattami/filament-page-with-sidebar/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/aymanalhattami/filament-context-menu/actions?query=workflow%3Arun-tests+branch%3Amain)
+[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/aymanalhattami/filament-page-with-sidebar/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/aymanalhattami/filament-context-menu/actions?query=workflow%3A"Fix+PHP+code+styling"+branch%3Amain)
 
 Organize pages in the sidebar in order to make navigation between pages more comfortable.
 

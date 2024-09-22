@@ -2,7 +2,6 @@
 
 namespace AymanAlhattami\FilamentPageWithSidebar;
 
-use Closure;
 use Filament\Navigation\NavigationItem;
 
 class PageNavigationItem extends NavigationItem

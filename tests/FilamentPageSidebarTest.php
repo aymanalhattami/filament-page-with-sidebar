@@ -1,10 +1,8 @@
 <?php
 
-use AymanAlhattami\FilamentPageWithSidebar\FilamentPageSidebar;
 use AymanAlhattami\FilamentPageWithSidebar\Enums\PageNavigationLayoutEnum;
+use AymanAlhattami\FilamentPageWithSidebar\FilamentPageSidebar;
 use AymanAlhattami\FilamentPageWithSidebar\PageNavigationItem;
-use Filament\Navigation\NavigationGroup;
-use Illuminate\Support\Collection;
 
 test('FilamentPageSidebar sets and gets title and description correctly', function () {
     $sidebar = FilamentPageSidebar::make();
@@ -46,11 +44,10 @@ test('FilamentPageSidebar filters, sorts, and groups navigation items correctly'
 
     $sortedNavigationItems = $sidebar->getNavigationItems();
 
-//    dd($sortedNavigationItems);
+    //    dd($sortedNavigationItems);
 
-    expect($sortedNavigationItems)->toHaveCount(3)
-//        ->and($sortedNavigationItems['Group 1']->items)->toHaveCount(1)
-//        ->and($sortedNavigationItems['Group 2']->items)->toHaveCount(1)
-//        ->and($sortedNavigationItems[0]->items['items'])->toHaveCount(1)
-    ; // Item 3 is invisible, so it's excluded
+    expect($sortedNavigationItems)->toHaveCount(3);
+    //        ->and($sortedNavigationItems['Group 1']->items)->toHaveCount(1)
+    //        ->and($sortedNavigationItems['Group 2']->items)->toHaveCount(1)
+    //        ->and($sortedNavigationItems[0]->items['items'])->toHaveCount(1)// Item 3 is invisible, so it's excluded
 });

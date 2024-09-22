@@ -24,7 +24,7 @@ class TestCase extends \Orchestra\Testbench\TestCase
         parent::setUp();
 
         Factory::guessFactoryNamesUsing(
-            fn (string $modelName) => 'AymanAlhattami\\FilamentPageWithSidebar\\Database\\Factories\\' . class_basename($modelName) . 'Factory'
+            fn (string $modelName) => 'AymanAlhattami\\FilamentPageWithSidebar\\Database\\Factories\\'.class_basename($modelName).'Factory'
         );
     }
 

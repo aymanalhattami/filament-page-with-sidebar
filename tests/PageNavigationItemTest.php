@@ -1,7 +1,6 @@
 <?php
 
 use AymanAlhattami\FilamentPageWithSidebar\PageNavigationItem;
-use Filament\Navigation\NavigationItem;
 
 test('PageNavigationItem sets and retrieves label correctly', function () {
     // Create a PageNavigationItem instance with a label

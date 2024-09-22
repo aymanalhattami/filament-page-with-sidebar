@@ -3,8 +3,8 @@
 namespace AymanAlhattami\FilamentPageWithSidebar;
 
 use Filament\Support\Assets\Css;
-use Spatie\LaravelPackageTools\Package;
 use Filament\Support\Facades\FilamentAsset;
+use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
 class FilamentPageWithSidebarServiceProvider extends PackageServiceProvider
@@ -20,7 +20,7 @@ class FilamentPageWithSidebarServiceProvider extends PackageServiceProvider
 
         FilamentAsset::register(
             assets: [
-                Css::make('filament-page-with-sidebar', __DIR__ . '/../resources/dist/app.css'),
+                Css::make('filament-page-with-sidebar', __DIR__.'/../resources/dist/app.css'),
             ],
             package: 'aymanalhattami/filament-page-with-sidebar'
         );

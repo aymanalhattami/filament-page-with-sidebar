@@ -1,7 +1,7 @@
 @php
     $sidebar = $this->getSidebar();
     $sidebarWidths = $this->getSidebarWidths();
-    $shouldListentToEvents = $this->shouldListenToEvents();
+    $shouldListenToEvents = $this->shouldListenToEvents();
 @endphp
 
 <div>
@@ -52,7 +52,7 @@
                             @endif
                         </div>
                         <ul class="@if ($sidebar->getTitle() != null || $sidebar->getDescription() != null) mt-4 @endif space-y-2 font-inter font-medium"
-                            @if (!$shouldListentToEvents) wire:ignore @endif>
+                            @if (!$shouldListenToEvents) wire:ignore @endif>
                             @foreach ($sidebar->getNavigationItems() as $group)
                                 <x-filament-page-with-sidebar::group :collapsible="$group->isCollapsible()" :icon="$group->getIcon()"
                                     :items="$group->getItems()" :label="$group->getLabel()" />

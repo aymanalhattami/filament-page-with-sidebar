@@ -1,10 +1,13 @@
 @php
     $sidebar = $this->getSidebar();
     $sidebarWidths = $this->getSidebarWidths();
+    $shouldListenToEvents = $this->shouldListenToEvents();
 @endphp
 
 <div>
-    @if($sidebar->getPageNavigationLayout() == \AymanAlhattami\FilamentPageWithSidebar\Enums\PageNavigationLayoutEnum::Sidebar)
+    @if (
+        $sidebar->getPageNavigationLayout() ==
+            \AymanAlhattami\FilamentPageWithSidebar\Enums\PageNavigationLayoutEnum::Sidebar)
         <div class="mt-8">
             <div class="grid grid-cols-12 gap-4 sm:gap-5 lg:gap-6">
                 <div class="col-[--col-span-default]
@@ -14,7 +17,7 @@
                         xl:col-[--col-span-xl]
                         2xl:col-[--col-span-2xl]
                         rounded"
-                     style="--col-span-default: span 12;
+                    style="--col-span-default: span 12;
                         --col-span-sm: span {{ $sidebarWidths['sm'] ?? 12 }};
                         --col-span-md: span {{ $sidebarWidths['md'] ?? 3 }};
                         --col-span-lg: span {{ $sidebarWidths['lg'] ?? 3 }};
@@ -36,26 +39,23 @@
 
                                             @if ($sidebar->getDescriptionCopyable())
                                                 <x-filament::icon
-                                                        x-on:click.prevent="
+                                                    x-on:click.prevent="
                                             window.navigator.clipboard.writeText('{{ $sidebar->getDescription() }}');
                                             $tooltip('Copied to clipboard', { timeout: 1500 })
                                         "
-                                                        icon="heroicon-o-clipboard-document"
-                                                        class="h-4 w-4 cursor-pointer hover:text-gray-700 text-gray-400 dark:text-gray-500 dark:hover:text-gray-400" />
+                                                    icon="heroicon-o-clipboard-document"
+                                                    class="h-4 w-4 cursor-pointer hover:text-gray-700 text-gray-400 dark:text-gray-500 dark:hover:text-gray-400" />
                                             @endif
                                         </p>
                                     @endif
                                 </div>
                             @endif
                         </div>
-                        <ul class="@if ($sidebar->getTitle() != null || $sidebar->getDescription() != null) mt-4 @endif space-y-2 font-inter font-medium" wire:ignore>
+                        <ul class="@if ($sidebar->getTitle() != null || $sidebar->getDescription() != null) mt-4 @endif space-y-2 font-inter font-medium"
+                            @if (!$shouldListenToEvents) wire:ignore @endif>
                             @foreach ($sidebar->getNavigationItems() as $group)
-                                <x-filament-page-with-sidebar::group
-                                        :collapsible="$group->isCollapsible()"
-                                        :icon="$group->getIcon()"
-                                        :items="$group->getItems()"
-                                        :label="$group->getLabel()"
-                                />
+                                <x-filament-page-with-sidebar::group :collapsible="$group->isCollapsible()" :icon="$group->getIcon()"
+                                    :items="$group->getItems()" :label="$group->getLabel()" />
                             @endforeach
                         </ul>
                     </div>
@@ -68,7 +68,7 @@
                         xl:col-[--col-span-xl]
                         2xl:col-[--col-span-2xl]
                         -mt-8"
-                     style="--col-span-default: span 12;
+                    style="--col-span-default: span 12;
                         --col-span-sm: span {{ $sidebarWidths['sm'] == 12 ? 12 : 12 - ($sidebarWidths['sm'] ?? 3) }};
                         --col-span-md: span {{ $sidebarWidths['md'] == 12 ? 12 : 12 - ($sidebarWidths['md'] ?? 3) }};
                         --col-span-lg: span {{ $sidebarWidths['lg'] == 12 ? 12 : 12 - ($sidebarWidths['lg'] ?? 3) }};
@@ -79,8 +79,8 @@
             </div>
         </div>
     @else
-        <x-filament-page-with-sidebar::topbar :sidebar="$sidebar"/>
+        <x-filament-page-with-sidebar::topbar :sidebar="$sidebar" />
 
         {{ $slot }}
-   @endif
+    @endif
 </div>

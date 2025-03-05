@@ -1,5 +1,5 @@
 {
-    "name": "aymanalhattami/filament-page-with-sidebar",
+    "name": "claybitner/filament-page-with-sidebar",
     "description": "Organize resource pages in sidebar instead of putting all the buttons and links elsewhere in order to make navigation between pages more comfortable.",
     "type": "library",
     "require": {

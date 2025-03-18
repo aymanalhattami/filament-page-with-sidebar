@@ -51,10 +51,6 @@
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
-    "require-dev": {
-        "pestphp/pest": "^3.1",
-        "orchestra/testbench": "^9.4"
-    },
     "config": {
         "allow-plugins": {
             "pestphp/pest-plugin": true,

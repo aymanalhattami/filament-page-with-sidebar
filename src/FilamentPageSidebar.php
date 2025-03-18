@@ -3,13 +3,14 @@
 namespace AymanAlhattami\FilamentPageWithSidebar;
 
 use AymanAlhattami\FilamentPageWithSidebar\Enums\PageNavigationLayoutEnum;
+use AymanAlhattami\FilamentPageWithSidebar\Interfaces\MakeInterface;
 use Closure;
 use Filament\Navigation\NavigationGroup;
 use Filament\Support\Concerns\EvaluatesClosures;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
 
-class FilamentPageSidebar
+class FilamentPageSidebar implements MakeInterface
 {
     use EvaluatesClosures;
 

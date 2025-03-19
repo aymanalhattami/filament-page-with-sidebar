@@ -385,6 +385,17 @@ public static function sidebar(Model $record): FilamentPageSidebar
 // ...
 ```
 
+### Listen To Events
+When using the trait HasPageSidebar and the navigation sets to ```->sidebarNavigation```, You can make the sidebar listen to events by overriding the shouldListenToEvents method
+```php
+// ...
+public function shouldListenToEvents(bool $condition = false): bool
+{
+    return true;
+}
+// ...
+```
+
 ## License
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.

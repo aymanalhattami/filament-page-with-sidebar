@@ -37,7 +37,7 @@ php artisan vendor:publish --tag="filament-page-with-sidebar-config"
 php artisan vendor:publish --tag="filament-page-with-sidebar-views"
 ```
 ## Usage with Resource Pages
-1. First you need to prepare resource pages, for example, we have an edit page, view page, manage page, change password page, and dashboar page for UserResource
+1. First you need to prepare resource pages, for example, we have an edit page, view page, manage page, change password page, and dashboard page for UserResource
 ```php
 use Filament\Resources\Resource;
 

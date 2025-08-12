@@ -65,4 +65,13 @@ trait HasPageSidebar
             '2xl' => 3,
         ];
     }
+
+    /**
+     * check if the side bar should listen to events or not
+     * this is useful if your items in the sidebar are dynamic and you want to update them
+     */
+    public function shouldListenToEvents(bool $condition = false): bool
+    {
+        return $condition;
+    }
 }

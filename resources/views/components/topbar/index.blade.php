@@ -10,7 +10,7 @@
         $isRtl = __('filament-panels::layout.direction') === 'rtl';
     @endphp
 
-    <nav class="mt-4 lg:flex lg:items-center min-h-16 shadow-sm ring-1 ring-gray-950">
+    <nav class="mt-4 lg:flex lg:items-center min-h-16">
         <div class="flex items-center me-6">
             <div class="flex items-center rtl:space-x-reverse">
                 @if ($sidebar->getTitle() !== null || $sidebar->getDescription() !== null)

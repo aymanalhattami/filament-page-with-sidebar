@@ -6,7 +6,7 @@
 ])
 <div class="fi-topbar-ctn">
     @php
-        $navigation = filament()->getNavigation();
+        $navigation = $sidebar->getNavigationItems();
         $isRtl = __('filament-panels::layout.direction') === 'rtl';
         $isSidebarCollapsibleOnDesktop = filament()->isSidebarCollapsibleOnDesktop();
         $isSidebarFullyCollapsibleOnDesktop = filament()->isSidebarFullyCollapsibleOnDesktop();

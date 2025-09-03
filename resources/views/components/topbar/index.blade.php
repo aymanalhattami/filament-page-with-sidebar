@@ -8,118 +8,37 @@
     @php
         $navigation = $sidebar->getNavigationItems();
         $isRtl = __('filament-panels::layout.direction') === 'rtl';
-        $isSidebarCollapsibleOnDesktop = filament()->isSidebarCollapsibleOnDesktop();
-        $isSidebarFullyCollapsibleOnDesktop = filament()->isSidebarFullyCollapsibleOnDesktop();
-        $hasTopNavigation = true;
-        $hasNavigation = true;
     @endphp
 
     <nav class="mt-4 flex items-center min-h-16 shadow-sm ring-1 ring-gray-950">
-        @if ($hasNavigation)
-            <x-filament::icon-button
-                    color="gray"
-                    :icon="\Filament\Support\Icons\Heroicon::OutlinedBars3"
-                    :icon-alias="\Filament\View\PanelsIconAlias::TOPBAR_OPEN_SIDEBAR_BUTTON"
-                    icon-size="lg"
-                    :label="__('filament-panels::layout.actions.sidebar.expand.label')"
-                    x-cloak
-                    x-data="{}"
-                    x-on:click="$store.sidebar.open()"
-                    x-show="! $store.sidebar.isOpen"
-                    class="fi-topbar-open-sidebar-btn"
-            />
-
-            <x-filament::icon-button
-                    color="gray"
-                    :icon="\Filament\Support\Icons\Heroicon::OutlinedXMark"
-                    :icon-alias="\Filament\View\PanelsIconAlias::TOPBAR_CLOSE_SIDEBAR_BUTTON"
-                    icon-size="lg"
-                    :label="__('filament-panels::layout.actions.sidebar.collapse.label')"
-                    x-cloak
-                    x-data="{}"
-                    x-on:click="$store.sidebar.close()"
-                    x-show="$store.sidebar.isOpen"
-                    class="fi-topbar-close-sidebar-btn"
-            />
-        @endif
-
         <div class="fi-topbar-start">
-            @if ($isSidebarCollapsibleOnDesktop)
-                <x-filament::icon-button
-                        color="gray"
-                        :icon="$isRtl ? \Filament\Support\Icons\Heroicon::OutlinedChevronLeft : \Filament\Support\Icons\Heroicon::OutlinedChevronRight"
-                        {{-- @deprecated Use `PanelsIconAlias::SIDEBAR_EXPAND_BUTTON_RTL` instead of `PanelsIconAlias::SIDEBAR_EXPAND_BUTTON` for RTL. --}}
-                        :icon-alias="
-                        $isRtl
-                        ? [
-                            \Filament\View\PanelsIconAlias::SIDEBAR_EXPAND_BUTTON_RTL,
-                            \Filament\View\PanelsIconAlias::SIDEBAR_EXPAND_BUTTON,
-                        ]
-                        : \Filament\View\PanelsIconAlias::SIDEBAR_EXPAND_BUTTON
-                    "
-                        icon-size="lg"
-                        :label="__('filament-panels::layout.actions.sidebar.expand.label')"
-                        x-cloak
-                        x-data="{}"
-                        x-on:click="$store.sidebar.open()"
-                        x-show="! $store.sidebar.isOpen"
-                        class="fi-topbar-open-collapse-sidebar-btn"
-                />
-            @endif
+            <div class="flex items-center rtl:space-x-reverse">
+                @if ($sidebar->getTitle() !== null || $sidebar->getDescription() !== null)
+                    <div class="w-full">
+                        @if ($sidebar->getTitle() != null)
+                            <h3 class="text-base font-medium text-slate-700 dark:text-white truncate block">
+                                {{ $sidebar->getTitle() }}
+                            </h3>
+                        @endif
 
-            @if ($isSidebarCollapsibleOnDesktop || $isSidebarFullyCollapsibleOnDesktop)
-                <x-filament::icon-button
-                        color="gray"
-                        :icon="$isRtl ? \Filament\Support\Icons\Heroicon::OutlinedChevronRight : \Filament\Support\Icons\Heroicon::OutlinedChevronLeft"
-                        {{-- @deprecated Use `PanelsIconAlias::SIDEBAR_COLLAPSE_BUTTON_RTL` instead of `PanelsIconAlias::SIDEBAR_COLLAPSE_BUTTON` for RTL. --}}
-                        :icon-alias="
-                        $isRtl
-                        ? [
-                            \Filament\View\PanelsIconAlias::SIDEBAR_COLLAPSE_BUTTON_RTL,
-                            \Filament\View\PanelsIconAlias::SIDEBAR_COLLAPSE_BUTTON,
-                        ]
-                        : \Filament\View\PanelsIconAlias::SIDEBAR_COLLAPSE_BUTTON
-                    "
-                        icon-size="lg"
-                        :label="__('filament-panels::layout.actions.sidebar.collapse.label')"
-                        x-cloak
-                        x-data="{}"
-                        x-on:click="$store.sidebar.close()"
-                        x-show="$store.sidebar.isOpen"
-                        class="fi-topbar-close-collapse-sidebar-btn"
-                />
-            @endif
+                        @if ($sidebar->getDescription())
+                            <p class="text-xs text-gray-400 flex items-center gap-x-1">
+                                {{ $sidebar->getDescription() }}
 
-                <div class="flex items-center rtl:space-x-reverse">
-                    @if ($sidebar->getTitle() !== null || $sidebar->getDescription() !== null)
-                        <div class="w-full">
-                            @if ($sidebar->getTitle() != null)
-                                <h3 class="text-base font-medium text-slate-700 dark:text-white truncate block">
-                                    {{ $sidebar->getTitle() }}
-                                </h3>
-                            @endif
-
-                            @if ($sidebar->getDescription())
-                                <p class="text-xs text-gray-400 flex items-center gap-x-1">
-                                    {{ $sidebar->getDescription() }}
-
-                                    @if ($sidebar->getDescriptionCopyable())
-                                        <x-filament::icon
-                                                x-on:click.prevent="window.navigator.clipboard.writeText('{{ $sidebar->getDescription() }}'); $tooltip('Copied to clipboard', { timeout: 1500 })"
-                                                icon="heroicon-o-clipboard-document"
-                                                class="h-4 w-4 cursor-pointer hover:text-gray-700 text-gray-400 dark:text-gray-500 dark:hover:text-gray-400"/>
-                                    @endif
-                                </p>
-                            @endif
-                        </div>
-                    @endif
-                </div>
+                                @if ($sidebar->getDescriptionCopyable())
+                                    <x-filament::icon
+                                            x-on:click.prevent="window.navigator.clipboard.writeText('{{ $sidebar->getDescription() }}'); $tooltip('Copied to clipboard', { timeout: 1500 })"
+                                            icon="heroicon-o-clipboard-document"
+                                            class="h-4 w-4 cursor-pointer hover:text-gray-700 text-gray-400 dark:text-gray-500 dark:hover:text-gray-400"/>
+                                @endif
+                            </p>
+                        @endif
+                    </div>
+                @endif
+            </div>
         </div>
 
-        @if ($hasTopNavigation || (! $hasNavigation))
-
-            @if ($hasNavigation)
-                <ul class="fi-topbar-nav-groups">
+        <ul class="fi-topbar-nav-groups">
                     @foreach ($navigation as $group)
                         @php
                             $groupLabel = $group->getLabel();
@@ -229,9 +148,5 @@
                         @endif
                     @endforeach
                 </ul>
-            @endif
-        @endif
     </nav>
-
-    <x-filament-actions::modals />
 </div>

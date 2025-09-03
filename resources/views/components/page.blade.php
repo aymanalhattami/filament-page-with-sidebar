@@ -49,7 +49,7 @@
                         </div>
                         <ul class="@if ($sidebar->getTitle() !== null || $sidebar->getDescription() !== null) mt-4 @endif space-y-2 font-inter font-medium" wire:ignore>
                             @foreach ($sidebar->getNavigationItems() as $group)
-                                <x-filament-page-with-sidebar::group
+                                <x-filament-panels::sidebar.group
                                         :collapsible="$group->isCollapsible()"
                                         :icon="$group->getIcon()"
                                         :items="$group->getItems()"

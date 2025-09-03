@@ -12,8 +12,8 @@ Organize pages in the sidebar in order to make navigation between pages more com
 > **Note:**
 > It supports both pages and resource pages.
 
->  **Note:**
-> For [Filament 2.x](https://filamentphp.com/docs/2.x/admin/installation)  use [version 1.x](https://github.com/aymanalhattami/filament-page-with-sidebar/tree/1.x)
+> **Note:**
+> For [Filament 2.x](https://filamentphp.com/docs/2.x/admin/installation) use [version 1.x](https://github.com/aymanalhattami/filament-page-with-sidebar/tree/1.x)
 
 
 ## Screenshots

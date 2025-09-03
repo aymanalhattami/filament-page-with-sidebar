@@ -2,7 +2,7 @@
     'sidebar',
 ])
 
-<div class="mt-8">
+<div class="mt-8 overflow-x-scroll">
     <nav class="flex items-center gap-x-2 bg-white px-4 py-2 rounded-md dark:bg-gray-900 dark:ring-white/10 md:px-4 lg:px-4 overflow-x-scroll scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-transparent rtl:space-x-reverse" wire:ignore>
         @if ($sidebar->getTitle() !== null || $sidebar->getDescription() != null)
             <div class="me-6 hidden lg:flex flex-col">

@@ -16,8 +16,6 @@
     @endphp
 
     <nav class="fi-topbar">
-        {{ \Filament\Support\Facades\FilamentView::renderHook(\Filament\View\PanelsRenderHook::TOPBAR_START) }}
-
         @if ($hasNavigation)
             <x-filament::icon-button
                     color="gray"
@@ -93,8 +91,6 @@
                 />
             @endif
 
-            {{ \Filament\Support\Facades\FilamentView::renderHook(\Filament\View\PanelsRenderHook::TOPBAR_LOGO_BEFORE) }}
-
             @if ($homeUrl = filament()->getHomeUrl())
                 <a {{ \Filament\Support\generate_href_html($homeUrl) }}>
                     <x-filament-panels::logo />
@@ -102,8 +98,6 @@
             @else
                 <x-filament-panels::logo />
             @endif
-
-            {{ \Filament\Support\Facades\FilamentView::renderHook(\Filament\View\PanelsRenderHook::TOPBAR_LOGO_AFTER) }}
         </div>
 
         @if ($hasTopNavigation || (! $hasNavigation))
@@ -233,13 +227,9 @@
                 @endif
                 class="fi-topbar-end"
         >
-            {{ \Filament\Support\Facades\FilamentView::renderHook(\Filament\View\PanelsRenderHook::GLOBAL_SEARCH_BEFORE) }}
-
             @if (filament()->isGlobalSearchEnabled())
                 @livewire(Filament\Livewire\GlobalSearch::class)
             @endif
-
-            {{ \Filament\Support\Facades\FilamentView::renderHook(\Filament\View\PanelsRenderHook::GLOBAL_SEARCH_AFTER) }}
 
             @if (filament()->auth()->check())
                 @if (filament()->hasDatabaseNotifications())
@@ -253,8 +243,6 @@
                 @endif
             @endif
         </div>
-
-        {{ \Filament\Support\Facades\FilamentView::renderHook(\Filament\View\PanelsRenderHook::TOPBAR_END) }}
     </nav>
 
     <x-filament-actions::modals />

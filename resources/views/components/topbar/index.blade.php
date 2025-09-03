@@ -11,7 +11,7 @@
     @endphp
 
     <nav class="mt-4 flex items-center min-h-16 shadow-sm ring-1 ring-gray-950">
-        <div class="fi-topbar-start">
+        <div class="flex items-center me-6">
             <div class="flex items-center rtl:space-x-reverse">
                 @if ($sidebar->getTitle() !== null || $sidebar->getDescription() !== null)
                     <div class="w-full">
@@ -38,7 +38,7 @@
             </div>
         </div>
 
-        <ul class="fi-topbar-nav-groups">
+        <ul class="items-center ms-4 me-4 gap-x-4 lg:my-2 lg:gap-y-1 lg:flex lg:flex-wrap">
                     @foreach ($navigation as $group)
                         @php
                             $groupLabel = $group->getLabel();

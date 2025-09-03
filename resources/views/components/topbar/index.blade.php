@@ -4,7 +4,7 @@
 @props([
     'sidebar',
 ])
-<div class="fi-topbar-ctn">
+<div class="overflow-x-clip">
     @php
         $navigation = $sidebar->getNavigationItems();
         $isRtl = __('filament-panels::layout.direction') === 'rtl';
@@ -14,7 +14,7 @@
         $hasNavigation = true;
     @endphp
 
-    <nav class="fi-topbar">
+    <nav class="mt-4 flex items-center min-h-16 shadow-sm ring-1 ring-gray-950">
         @if ($hasNavigation)
             <x-filament::icon-button
                     color="gray"

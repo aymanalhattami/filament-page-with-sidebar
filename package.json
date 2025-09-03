@@ -4,7 +4,7 @@
     "build": "npx tailwindcss/cli -i resources/css/app.css -o resources/dist/app.css --minify"
   },
   "devDependencies": {
-    "tailwindcss": "^4.0.0",
-    "@tailwindcss/cli": "^4.0.0"
+    "@tailwindcss/cli": "^4.1.12",
+    "tailwindcss": "^4.1.12"
   }
 }

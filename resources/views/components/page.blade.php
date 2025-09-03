@@ -7,12 +7,12 @@
     @if($sidebar->getPageNavigationLayout() == \AymanAlhattami\FilamentPageWithSidebar\Enums\PageNavigationLayoutEnum::Sidebar)
         <div class="mt-8">
             <div class="grid grid-cols-12 gap-4 sm:gap-5 lg:gap-6">
-                <div class="col-[--col-span-default]
-                        sm:col-[--col-span-sm]
-                        md:col-[--col-span-md]
-                        lg:col-[--col-span-lg]
-                        xl:col-[--col-span-xl]
-                        2xl:col-[--col-span-2xl]
+                <div class="col-(--col-span-default)
+                        sm:col-(--col-span-sm)
+                        md:col-(--col-span-md)
+                        lg:col-(--col-span-lg)
+                        xl:col-(--col-span-xl)
+                        2xl:col-(--col-span-2xl)
                         rounded"
                      style="--col-span-default: span 12;
                         --col-span-sm: span {{ $sidebarWidths['sm'] ?? 12 }};
@@ -61,12 +61,12 @@
                     </div>
                 </div>
 
-                <div class="col-[--col-span-default]
-                        sm:col-[--col-span-sm]
-                        md:col-[--col-span-md]
-                        lg:col-[--col-span-lg]
-                        xl:col-[--col-span-xl]
-                        2xl:col-[--col-span-2xl]
+                <div class="col-(--col-span-default)
+                        sm:col-(--col-span-sm)
+                        md:col-(--col-span-md)
+                        lg:col-(--col-span-lg)
+                        xl:col-(--col-span-xl)
+                        2xl:col-(--col-span-2xl)
                         -mt-8"
                      style="--col-span-default: span 12;
                         --col-span-sm: span {{ $sidebarWidths['sm'] == 12 ? 12 : 12 - ($sidebarWidths['sm'] ?? 3) }};

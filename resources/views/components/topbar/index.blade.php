@@ -10,7 +10,7 @@
         $isRtl = __('filament-panels::layout.direction') === 'rtl';
     @endphp
 
-    <nav class="mt-4 flex items-center min-h-16 shadow-sm ring-1 ring-gray-950">
+    <nav class="mt-4 lg:flex lg:items-center min-h-16 shadow-sm ring-1 ring-gray-950">
         <div class="flex items-center me-6">
             <div class="flex items-center rtl:space-x-reverse">
                 @if ($sidebar->getTitle() !== null || $sidebar->getDescription() !== null)
@@ -38,7 +38,7 @@
             </div>
         </div>
 
-        <ul class="items-center ms-4 me-4 gap-x-4 lg:my-2 lg:gap-y-1 lg:flex lg:flex-wrap">
+        <ul class="lg:my-2 lg:gap-y-1 flex flex-wrap lg:items-center ms-4 me-4 gap-x-4">
                     @foreach ($navigation as $group)
                         @php
                             $groupLabel = $group->getLabel();

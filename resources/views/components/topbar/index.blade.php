@@ -10,9 +10,8 @@
         $isRtl = __('filament-panels::layout.direction') === 'rtl';
         $isSidebarCollapsibleOnDesktop = filament()->isSidebarCollapsibleOnDesktop();
         $isSidebarFullyCollapsibleOnDesktop = filament()->isSidebarFullyCollapsibleOnDesktop();
-        $hasTopNavigation = filament()->hasTopNavigation();
-        $hasNavigation = filament()->hasNavigation();
-        $hasTenancy = filament()->hasTenancy();
+        $hasTopNavigation = true;
+        $hasNavigation = true;
     @endphp
 
     <nav class="fi-topbar">
@@ -101,9 +100,6 @@
         </div>
 
         @if ($hasTopNavigation || (! $hasNavigation))
-            @if ($hasTenancy && filament()->hasTenantMenu())
-                <x-filament-panels::tenant-menu />
-            @endif
 
             @if ($hasNavigation)
                 <ul class="fi-topbar-nav-groups">
@@ -218,31 +214,6 @@
                 </ul>
             @endif
         @endif
-
-        <div
-                @if ($hasTenancy)
-                    x-persist="topbar.end.panel-{{ filament()->getId() }}.tenant-{{ filament()->getTenant()?->getKey() }}"
-                @else
-                    x-persist="topbar.end.panel-{{ filament()->getId() }}"
-                @endif
-                class="fi-topbar-end"
-        >
-            @if (filament()->isGlobalSearchEnabled())
-                @livewire(Filament\Livewire\GlobalSearch::class)
-            @endif
-
-            @if (filament()->auth()->check())
-                @if (filament()->hasDatabaseNotifications())
-                    @livewire(Filament\Livewire\DatabaseNotifications::class, [
-                        'lazy' => filament()->hasLazyLoadedDatabaseNotifications(),
-                    ])
-                @endif
-
-                @if (filament()->hasUserMenu())
-                    <x-filament-panels::user-menu />
-                @endif
-            @endif
-        </div>
     </nav>
 
     <x-filament-actions::modals />

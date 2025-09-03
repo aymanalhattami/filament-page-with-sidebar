@@ -90,13 +90,30 @@
                 />
             @endif
 
-            @if ($homeUrl = filament()->getHomeUrl())
-                <a {{ \Filament\Support\generate_href_html($homeUrl) }}>
-                    <x-filament-panels::logo />
-                </a>
-            @else
-                <x-filament-panels::logo />
-            @endif
+                <div class="flex items-center rtl:space-x-reverse">
+                    @if ($sidebar->getTitle() !== null || $sidebar->getDescription() !== null)
+                        <div class="w-full">
+                            @if ($sidebar->getTitle() != null)
+                                <h3 class="text-base font-medium text-slate-700 dark:text-white truncate block">
+                                    {{ $sidebar->getTitle() }}
+                                </h3>
+                            @endif
+
+                            @if ($sidebar->getDescription())
+                                <p class="text-xs text-gray-400 flex items-center gap-x-1">
+                                    {{ $sidebar->getDescription() }}
+
+                                    @if ($sidebar->getDescriptionCopyable())
+                                        <x-filament::icon
+                                                x-on:click.prevent="window.navigator.clipboard.writeText('{{ $sidebar->getDescription() }}'); $tooltip('Copied to clipboard', { timeout: 1500 })"
+                                                icon="heroicon-o-clipboard-document"
+                                                class="h-4 w-4 cursor-pointer hover:text-gray-700 text-gray-400 dark:text-gray-500 dark:hover:text-gray-400"/>
+                                    @endif
+                                </p>
+                            @endif
+                        </div>
+                    @endif
+                </div>
         </div>
 
         @if ($hasTopNavigation || (! $hasNavigation))

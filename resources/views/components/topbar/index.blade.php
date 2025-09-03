@@ -4,18 +4,20 @@
 @props([
     'sidebar',
 ])
-
 <div class="fi-topbar-ctn">
     @php
-        $navigation = $sidebar->getNavigationItems();
+        $navigation = filament()->getNavigation();
         $isRtl = __('filament-panels::layout.direction') === 'rtl';
         $isSidebarCollapsibleOnDesktop = filament()->isSidebarCollapsibleOnDesktop();
         $isSidebarFullyCollapsibleOnDesktop = filament()->isSidebarFullyCollapsibleOnDesktop();
-        $hasTopNavigation = true;
-        $hasNavigation = true;
+        $hasTopNavigation = filament()->hasTopNavigation();
+        $hasNavigation = filament()->hasNavigation();
+        $hasTenancy = filament()->hasTenancy();
     @endphp
 
     <nav class="fi-topbar">
+        {{ \Filament\Support\Facades\FilamentView::renderHook(\Filament\View\PanelsRenderHook::TOPBAR_START) }}
+
         @if ($hasNavigation)
             <x-filament::icon-button
                     color="gray"
@@ -90,9 +92,24 @@
                         class="fi-topbar-close-collapse-sidebar-btn"
                 />
             @endif
+
+            {{ \Filament\Support\Facades\FilamentView::renderHook(\Filament\View\PanelsRenderHook::TOPBAR_LOGO_BEFORE) }}
+
+            @if ($homeUrl = filament()->getHomeUrl())
+                <a {{ \Filament\Support\generate_href_html($homeUrl) }}>
+                    <x-filament-panels::logo />
+                </a>
+            @else
+                <x-filament-panels::logo />
+            @endif
+
+            {{ \Filament\Support\Facades\FilamentView::renderHook(\Filament\View\PanelsRenderHook::TOPBAR_LOGO_AFTER) }}
         </div>
 
         @if ($hasTopNavigation || (! $hasNavigation))
+            @if ($hasTenancy && filament()->hasTenantMenu())
+                <x-filament-panels::tenant-menu />
+            @endif
 
             @if ($hasNavigation)
                 <ul class="fi-topbar-nav-groups">
@@ -207,6 +224,37 @@
                 </ul>
             @endif
         @endif
+
+        <div
+                @if ($hasTenancy)
+                    x-persist="topbar.end.panel-{{ filament()->getId() }}.tenant-{{ filament()->getTenant()?->getKey() }}"
+                @else
+                    x-persist="topbar.end.panel-{{ filament()->getId() }}"
+                @endif
+                class="fi-topbar-end"
+        >
+            {{ \Filament\Support\Facades\FilamentView::renderHook(\Filament\View\PanelsRenderHook::GLOBAL_SEARCH_BEFORE) }}
+
+            @if (filament()->isGlobalSearchEnabled())
+                @livewire(Filament\Livewire\GlobalSearch::class)
+            @endif
+
+            {{ \Filament\Support\Facades\FilamentView::renderHook(\Filament\View\PanelsRenderHook::GLOBAL_SEARCH_AFTER) }}
+
+            @if (filament()->auth()->check())
+                @if (filament()->hasDatabaseNotifications())
+                    @livewire(Filament\Livewire\DatabaseNotifications::class, [
+                        'lazy' => filament()->hasLazyLoadedDatabaseNotifications(),
+                    ])
+                @endif
+
+                @if (filament()->hasUserMenu())
+                    <x-filament-panels::user-menu />
+                @endif
+            @endif
+        </div>
+
+        {{ \Filament\Support\Facades\FilamentView::renderHook(\Filament\View\PanelsRenderHook::TOPBAR_END) }}
     </nav>
 
     <x-filament-actions::modals />

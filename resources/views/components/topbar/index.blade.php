@@ -38,7 +38,7 @@
             </div>
         </div>
 
-        <ul class="lg:my-2 lg:gap-y-1 flex flex-wrap lg:items-center ms-4 me-4 gap-x-4">
+        <ul class="flex flex-wrap">
                     @foreach ($navigation as $group)
                         @php
                             $groupLabel = $group->getLabel();

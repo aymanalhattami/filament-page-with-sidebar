@@ -1,10 +1,12 @@
 @php
+    use AymanAlhattami\FilamentPageWithSidebar\Enums\PageNavigationLayoutEnum;
+
     $sidebar = $this->getSidebar();
     $sidebarWidths = $this->getSidebarWidths();
 @endphp
 
 <div>
-    @if($sidebar->getPageNavigationLayout() == \AymanAlhattami\FilamentPageWithSidebar\Enums\PageNavigationLayoutEnum::Sidebar)
+    @if($sidebar->getPageNavigationLayout() === PageNavigationLayoutEnum::Sidebar)
         <div class="mt-8">
             <div class="grid grid-cols-12 gap-4 sm:gap-5 lg:gap-6">
                 <div class="col-(--col-span-default)
@@ -20,9 +22,9 @@
                         --col-span-lg: span {{ $sidebarWidths['lg'] ?? 3 }};
                         --col-span-xl: span {{ $sidebarWidths['xl'] ?? 3 }};
                         --col-span-2xl: span {{ $sidebarWidths['2xl'] ?? 3 }};">
-                    <div class="">
+                    <div>
                         <div class="flex items-center rtl:space-x-reverse">
-                            @if ($sidebar->getTitle() != null || $sidebar->getDescription() != null)
+                            @if ($sidebar->getTitle() !== null || $sidebar->getDescription() !== null)
                                 <div class="w-full">
                                     @if ($sidebar->getTitle() != null)
                                         <h3 class="text-base font-medium text-slate-700 dark:text-white truncate block">
@@ -36,19 +38,16 @@
 
                                             @if ($sidebar->getDescriptionCopyable())
                                                 <x-filament::icon
-                                                        x-on:click.prevent="
-                                            window.navigator.clipboard.writeText('{{ $sidebar->getDescription() }}');
-                                            $tooltip('Copied to clipboard', { timeout: 1500 })
-                                        "
+                                                        x-on:click.prevent="window.navigator.clipboard.writeText('{{ $sidebar->getDescription() }}'); $tooltip('Copied to clipboard', { timeout: 1500 })"
                                                         icon="heroicon-o-clipboard-document"
-                                                        class="h-4 w-4 cursor-pointer hover:text-gray-700 text-gray-400 dark:text-gray-500 dark:hover:text-gray-400" />
+                                                        class="h-4 w-4 cursor-pointer hover:text-gray-700 text-gray-400 dark:text-gray-500 dark:hover:text-gray-400"/>
                                             @endif
                                         </p>
                                     @endif
                                 </div>
                             @endif
                         </div>
-                        <ul class="@if ($sidebar->getTitle() != null || $sidebar->getDescription() != null) mt-4 @endif space-y-2 font-inter font-medium" wire:ignore>
+                        <ul class="@if ($sidebar->getTitle() !== null || $sidebar->getDescription() !== null) mt-4 @endif space-y-2 font-inter font-medium" wire:ignore>
                             @foreach ($sidebar->getNavigationItems() as $group)
                                 <x-filament-page-with-sidebar::group
                                         :collapsible="$group->isCollapsible()"
@@ -82,5 +81,5 @@
         <x-filament-page-with-sidebar::topbar :sidebar="$sidebar"/>
 
         {{ $slot }}
-   @endif
+    @endif
 </div>

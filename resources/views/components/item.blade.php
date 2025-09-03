@@ -24,8 +24,7 @@
         {{
             $attributes->class([
                 'fi-sidebar-item',
-                // @deprecated `fi-sidebar-item-active` has been replaced by `fi-active`.
-                'fi-active fi-sidebar-item-active' => $active,
+                'fi-active' => $active,
                 'flex flex-col gap-y-1' => $active || $activeChildItems,
             ])
         }}

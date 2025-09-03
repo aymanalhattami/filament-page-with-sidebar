@@ -20,7 +20,7 @@ trait HasPageSidebar
 
         // Using ${'view'} instead of $view in order to avoid Intelephense warning
         if (static::$hasSidebar) {
-            static::${'view'} = 'filament-page-with-sidebar::proxy';
+            $this->view = 'filament-page-with-sidebar::proxy';
         }
     }
 

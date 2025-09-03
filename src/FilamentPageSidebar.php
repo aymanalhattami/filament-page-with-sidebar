@@ -20,7 +20,7 @@ class FilamentPageSidebar implements MakeInterface
 
     protected bool|Closure $descriptionCopyable = false;
 
-    protected array $navigationItems;
+    protected array $navigationItems = [];
 
     protected PageNavigationLayoutEnum $pageNavigationLayoutEnum = PageNavigationLayoutEnum::Sidebar;
 
@@ -28,7 +28,7 @@ class FilamentPageSidebar implements MakeInterface
 
     public static function make(): static
     {
-        return new static;
+        return new static();
     }
 
     public function setTitle(string|Closure $title): static
@@ -139,9 +139,11 @@ class FilamentPageSidebar implements MakeInterface
             ->all();
     }
 
-    public function setPageNavigationLayout(PageNavigationLayoutEnum $pageNavigationLayoutEnum)
+    public function setPageNavigationLayout(PageNavigationLayoutEnum $pageNavigationLayoutEnum): static
     {
-        return $this->pageNavigationLayoutEnum = $pageNavigationLayoutEnum;
+        $this->pageNavigationLayoutEnum = $pageNavigationLayoutEnum;
+
+        return $this;
     }
 
     public function getPageNavigationLayout(): PageNavigationLayoutEnum

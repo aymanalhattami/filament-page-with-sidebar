@@ -28,7 +28,7 @@ class FilamentPageSidebar implements MakeInterface
 
     public static function make(): static
     {
-        return new static();
+        return new static;
     }
 
     public function setTitle(string|Closure $title): static

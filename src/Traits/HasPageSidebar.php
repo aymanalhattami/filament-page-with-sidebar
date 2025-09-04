@@ -2,6 +2,7 @@
 
 namespace AymanAlhattami\FilamentPageWithSidebar\Traits;
 
+/** @phpstan-ignore-next-line  */
 trait HasPageSidebar
 {
     /**

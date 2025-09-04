@@ -44,10 +44,73 @@ test('FilamentPageSidebar filters, sorts, and groups navigation items correctly'
 
     $sortedNavigationItems = $sidebar->getNavigationItems();
 
-    //    dd($sortedNavigationItems);
-
     expect($sortedNavigationItems)->toHaveCount(3);
     //        ->and($sortedNavigationItems['Group 1']->items)->toHaveCount(1)
     //        ->and($sortedNavigationItems['Group 2']->items)->toHaveCount(1)
     //        ->and($sortedNavigationItems[0]->items['items'])->toHaveCount(1)// Item 3 is invisible, so it's excluded
+});
+
+test('FilamentPageSidebar handles closure values correctly', function () {
+    $sidebar = FilamentPageSidebar::make();
+
+    // Test closure for title
+    $sidebar->setTitle(fn() => 'Dynamic Title');
+    expect($sidebar->getTitle())->toBe('Dynamic Title');
+
+    // Test closure for description
+    $sidebar->setDescription(fn() => 'Dynamic Description');
+    expect($sidebar->getDescription())->toBe('Dynamic Description');
+
+    // Test closure for description copyable
+    $sidebar->setDescriptionCopyable(fn() => true);
+    expect($sidebar->getDescriptionCopyable())->toBeTrue();
+
+    $sidebar->setDescriptionCopyable(fn() => false);
+    expect($sidebar->getDescriptionCopyable())->toBeFalse();
+});
+
+test('FilamentPageSidebar handles empty navigation items', function () {
+    $sidebar = FilamentPageSidebar::make()->setNavigationItems([]);
+    
+    expect($sidebar->getNavigationItems())->toBeEmpty();
+});
+
+test('FilamentPageSidebar handles null values correctly', function () {
+    $sidebar = FilamentPageSidebar::make();
+    
+    expect($sidebar->getTitle())->toBeNull();
+    expect($sidebar->getDescription())->toBeNull();
+    expect($sidebar->getDescriptionCopyable())->toBeFalse();
+});
+
+test('FilamentPageSidebar method chaining works correctly', function () {
+    $sidebar = FilamentPageSidebar::make()
+        ->setTitle('Test Title')
+        ->setDescription('Test Description')
+        ->setDescriptionCopyable(true)
+        ->topbarNavigation();
+
+    expect($sidebar->getTitle())->toBe('Test Title');
+    expect($sidebar->getDescription())->toBe('Test Description');
+    expect($sidebar->getDescriptionCopyable())->toBeTrue();
+    expect($sidebar->getPageNavigationLayout())->toBe(PageNavigationLayoutEnum::Topbar);
+});
+
+test('FilamentPageSidebar can switch between navigation layouts', function () {
+    $sidebar = FilamentPageSidebar::make();
+    
+    // Start with sidebar
+    expect($sidebar->getPageNavigationLayout())->toBe(PageNavigationLayoutEnum::Sidebar);
+    
+    // Switch to topbar
+    $sidebar->topbarNavigation();
+    expect($sidebar->getPageNavigationLayout())->toBe(PageNavigationLayoutEnum::Topbar);
+    
+    // Switch back to sidebar
+    $sidebar->sidebarNavigation();
+    expect($sidebar->getPageNavigationLayout())->toBe(PageNavigationLayoutEnum::Sidebar);
+    
+    // Set directly
+    $sidebar->setPageNavigationLayout(PageNavigationLayoutEnum::Topbar);
+    expect($sidebar->getPageNavigationLayout())->toBe(PageNavigationLayoutEnum::Topbar);
 });

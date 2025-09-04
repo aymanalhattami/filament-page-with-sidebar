@@ -125,10 +125,7 @@ class FilamentPageSidebar implements MakeInterface
                     ];
                 }
 
-                $sort = array_search(
-                    $groupIndex,
-                    $groupsToSearch,
-                );
+                $sort = array_search($groupIndex, $groupsToSearch, true);
 
                 if ($sort === false) {
                     return count($registeredGroups);

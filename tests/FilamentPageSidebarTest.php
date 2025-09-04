@@ -16,7 +16,7 @@ test('FilamentPageSidebar sets and gets title and description correctly', functi
     expect($sidebar->getDescription())->toBe('Test Description');
 
     // Test setting and getting description as copyable
-    $sidebar->setDescriptionCopyable(true);
+    $sidebar->setDescriptionCopyable();
     expect($sidebar->getDescriptionCopyable())->toBeTrue();
 });
 

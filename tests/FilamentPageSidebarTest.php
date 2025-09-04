@@ -54,30 +54,30 @@ test('FilamentPageSidebar handles closure values correctly', function () {
     $sidebar = FilamentPageSidebar::make();
 
     // Test closure for title
-    $sidebar->setTitle(fn() => 'Dynamic Title');
+    $sidebar->setTitle(fn () => 'Dynamic Title');
     expect($sidebar->getTitle())->toBe('Dynamic Title');
 
     // Test closure for description
-    $sidebar->setDescription(fn() => 'Dynamic Description');
+    $sidebar->setDescription(fn () => 'Dynamic Description');
     expect($sidebar->getDescription())->toBe('Dynamic Description');
 
     // Test closure for description copyable
-    $sidebar->setDescriptionCopyable(fn() => true);
+    $sidebar->setDescriptionCopyable(fn () => true);
     expect($sidebar->getDescriptionCopyable())->toBeTrue();
 
-    $sidebar->setDescriptionCopyable(fn() => false);
+    $sidebar->setDescriptionCopyable(fn () => false);
     expect($sidebar->getDescriptionCopyable())->toBeFalse();
 });
 
 test('FilamentPageSidebar handles empty navigation items', function () {
     $sidebar = FilamentPageSidebar::make()->setNavigationItems([]);
-    
+
     expect($sidebar->getNavigationItems())->toBeEmpty();
 });
 
 test('FilamentPageSidebar handles null values correctly', function () {
     $sidebar = FilamentPageSidebar::make();
-    
+
     expect($sidebar->getTitle())->toBeNull();
     expect($sidebar->getDescription())->toBeNull();
     expect($sidebar->getDescriptionCopyable())->toBeFalse();
@@ -98,18 +98,18 @@ test('FilamentPageSidebar method chaining works correctly', function () {
 
 test('FilamentPageSidebar can switch between navigation layouts', function () {
     $sidebar = FilamentPageSidebar::make();
-    
+
     // Start with sidebar
     expect($sidebar->getPageNavigationLayout())->toBe(PageNavigationLayoutEnum::Sidebar);
-    
+
     // Switch to topbar
     $sidebar->topbarNavigation();
     expect($sidebar->getPageNavigationLayout())->toBe(PageNavigationLayoutEnum::Topbar);
-    
+
     // Switch back to sidebar
     $sidebar->sidebarNavigation();
     expect($sidebar->getPageNavigationLayout())->toBe(PageNavigationLayoutEnum::Sidebar);
-    
+
     // Set directly
     $sidebar->setPageNavigationLayout(PageNavigationLayoutEnum::Topbar);
     expect($sidebar->getPageNavigationLayout())->toBe(PageNavigationLayoutEnum::Topbar);

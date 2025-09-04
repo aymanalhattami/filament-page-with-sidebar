@@ -10,23 +10,23 @@ test('FilamentPageSidebar implements MakeInterface', function () {
 test('MakeInterface requires make method', function () {
     $reflection = new ReflectionClass(MakeInterface::class);
     $methods = $reflection->getMethods();
-    
-    $methodNames = array_map(fn($method) => $method->getName(), $methods);
-    
+
+    $methodNames = array_map(fn ($method) => $method->getName(), $methods);
+
     expect($methodNames)->toContain('make')
         ->and($methodNames)->toContain('__construct');
 });
 
 test('FilamentPageSidebar make method returns instance', function () {
     $instance = FilamentPageSidebar::make();
-    
+
     expect($instance)->toBeInstanceOf(FilamentPageSidebar::class)
         ->and($instance)->toBeInstanceOf(MakeInterface::class);
 });
 
 test('FilamentPageSidebar can be instantiated directly', function () {
-    $instance = new FilamentPageSidebar();
-    
+    $instance = new FilamentPageSidebar;
+
     expect($instance)->toBeInstanceOf(FilamentPageSidebar::class)
         ->and($instance)->toBeInstanceOf(MakeInterface::class);
 });

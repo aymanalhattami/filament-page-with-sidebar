@@ -60,11 +60,11 @@ test('navigation items with different visibility work correctly', function () {
 
 test('sidebar with closure values works in real scenario', function () {
     $user = (object) ['name' => 'John Doe'];
-    
+
     $sidebar = FilamentPageSidebar::make()
-        ->setTitle(fn() => "Welcome, {$user->name}")
-        ->setDescription(fn() => "Last login: " . date('Y-m-d'))
-        ->setDescriptionCopyable(fn() => true);
+        ->setTitle(fn () => "Welcome, {$user->name}")
+        ->setDescription(fn () => 'Last login: '.date('Y-m-d'))
+        ->setDescriptionCopyable(fn () => true);
 
     expect($sidebar->getTitle())->toBe('Welcome, John Doe')
         ->and($sidebar->getDescription())->toContain('Last login:')

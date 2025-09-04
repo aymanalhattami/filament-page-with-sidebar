@@ -20,7 +20,7 @@ test('PageNavigationLayoutEnum can be created from string with tryFrom', functio
 
 test('PageNavigationLayoutEnum has all expected cases', function () {
     $cases = PageNavigationLayoutEnum::cases();
-    
+
     expect($cases)->toHaveCount(2)
         ->and($cases)->toContain(PageNavigationLayoutEnum::Topbar)
         ->and($cases)->toContain(PageNavigationLayoutEnum::Sidebar);

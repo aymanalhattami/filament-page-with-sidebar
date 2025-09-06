@@ -13,6 +13,7 @@ Organize pages in the sidebar in order to make navigation between pages more com
 > It supports both pages and resource pages.
 
 > **Note:**
+> For [Filament 3.x](https://filamentphp.com/docs/3.x/admin/installation) use [version 2.x](https://github.com/aymanalhattami/filament-page-with-sidebar/tree/2.x)
 > For [Filament 2.x](https://filamentphp.com/docs/2.x/admin/installation) use [version 1.x](https://github.com/aymanalhattami/filament-page-with-sidebar/tree/1.x)
 
 
@@ -391,3 +392,4 @@ The MIT License (MIT). Please see [License File](LICENSE.md) for more informatio
 
 
 [Demo Project Link](https://github.com/aymanalhattami/filament-page-with-sidebar-project)
+

@@ -1,3 +1,20 @@
+## 3.0.0 - 2025-09-06
+
+### What's Changed
+
+* chore(deps): bump dependabot/fetch-metadata from 2.3.0 to 2.4.0 by @dependabot[bot] in https://github.com/aymanalhattami/filament-page-with-sidebar/pull/52
+* chore(deps): bump aglipanci/laravel-pint-action from 2.5 to 2.6 by @dependabot[bot] in https://github.com/aymanalhattami/filament-page-with-sidebar/pull/55
+* Update README.md by fixing really small typo by @eugenefvdm in https://github.com/aymanalhattami/filament-page-with-sidebar/pull/53
+* chore(deps): bump stefanzweifel/git-auto-commit-action from 5 to 6 by @dependabot[bot] in https://github.com/aymanalhattami/filament-page-with-sidebar/pull/54
+* chore(deps): bump actions/checkout from 4 to 5 by @dependabot[bot] in https://github.com/aymanalhattami/filament-page-with-sidebar/pull/57
+* filament v4 by @aymanalhattami in https://github.com/aymanalhattami/filament-page-with-sidebar/pull/58
+
+### New Contributors
+
+* @eugenefvdm made their first contribution in https://github.com/aymanalhattami/filament-page-with-sidebar/pull/53
+
+**Full Changelog**: https://github.com/aymanalhattami/filament-page-with-sidebar/compare/2.6.0...3.0.0
+
 ## 2.6.0 - 2025-03-18
 
 ### What's Changed

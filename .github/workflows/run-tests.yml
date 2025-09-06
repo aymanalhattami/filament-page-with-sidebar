@@ -62,7 +62,4 @@ jobs:
 
       - name: Execute tests
         run: |
-          php vendor/bin/pest \
-            -c phpunit.xml.dist \
-            --colors=always \
-            --cache-result-file=.phpunit.cache/results
+          php vendor/bin/pest

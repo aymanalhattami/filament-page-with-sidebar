@@ -7,13 +7,12 @@
 [![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/aymanalhattami/filament-page-with-sidebar/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/aymanalhattami/filament-page-with-sidebar/actions?query=workflow%3Arun-tests+branch%3Amain)
 [![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/aymanalhattami/filament-page-with-sidebar/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/aymanalhattami/filament-page-with-sidebar/actions?query=workflow%3A"Fix+PHP+code+styling"+branch%3Amain)
 
-Organize pages in the sidebar in order to make navigation between pages more comfortable.
+Organize pages in the sidebar in order to make navigation between pages more comfortable. It supports both custom pages and resource pages
 
-> **Note:**
-> It supports both pages and resource pages.
+**Note:**
 
-> **Note:**
 > For [Filament 3.x](https://filamentphp.com/docs/3.x/admin/installation) use [version 2.x](https://github.com/aymanalhattami/filament-page-with-sidebar/tree/2.x)
+
 > For [Filament 2.x](https://filamentphp.com/docs/2.x/admin/installation) use [version 1.x](https://github.com/aymanalhattami/filament-page-with-sidebar/tree/1.x)
 
 
@@ -392,4 +391,5 @@ The MIT License (MIT). Please see [License File](LICENSE.md) for more informatio
 
 
 [Demo Project Link](https://github.com/aymanalhattami/filament-page-with-sidebar-project)
+
 

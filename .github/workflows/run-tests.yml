@@ -27,12 +27,25 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v5
 
-      - name: Setup PHP
+      # Linux: include pcntl
+      - name: Setup PHP (Linux)
+        if: runner.os == 'Linux'
         uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php }}
           extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite, bcmath, soap, intl, gd, exif, iconv, imagick, fileinfo
           coverage: none
+          tools: composer:v2
+
+      # Windows: exclude pcntl (not supported)
+      - name: Setup PHP (Windows)
+        if: runner.os == 'Windows'
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          extensions: dom, curl, libxml, mbstring, zip, pdo, sqlite, pdo_sqlite, bcmath, soap, intl, gd, exif, iconv, imagick, fileinfo
+          coverage: none
+          tools: composer:v2
 
       - name: Setup problem matchers
         run: |
@@ -47,5 +60,9 @@ jobs:
       - name: List Installed Dependencies
         run: composer show -D
 
-#      - name: Execute tests
-#        run: vendor/bin/pest
+      - name: Execute tests
+        run: |
+          php vendor/bin/pest \
+            -c phpunit.xml.dist \
+            --colors=always \
+            --cache-result-file=.phpunit.cache/results

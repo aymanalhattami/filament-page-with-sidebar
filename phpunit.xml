@@ -8,8 +8,8 @@
          cacheDirectory=".phpunit.cache"
          executionOrder="depends,defects">
     <testsuites>
-        <testsuite name="Unit">
-            <directory>tests</directory>
+        <testsuite name="Feature">
+            <directory suffix="Test.php">./tests</directory>
         </testsuite>
     </testsuites>
     <source>

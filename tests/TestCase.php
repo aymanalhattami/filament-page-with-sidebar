@@ -21,28 +21,7 @@ class TestCase extends \Orchestra\Testbench\TestCase
     protected function getPackageProviders($app)
     {
         return [
-            ActionsServiceProvider::class,
-            BladeCaptureDirectiveServiceProvider::class,
-            BladeHeroiconsServiceProvider::class,
-            BladeIconsServiceProvider::class,
-            FilamentServiceProvider::class,
-            FormsServiceProvider::class,
-            InfolistsServiceProvider::class,
-            LivewireServiceProvider::class,
-            NotificationsServiceProvider::class,
-            SupportServiceProvider::class,
-            TablesServiceProvider::class,
-            WidgetsServiceProvider::class,
             FilamentPageWithSidebarServiceProvider::class,
         ];
-    }
-
-    protected function getEnvironmentSetUp($app)
-    {
-        config()->set('database.default', 'testing');
-        config()->set('database.connections.testing', [
-            'driver' => 'sqlite',
-            'database' => ':memory:',
-        ]);
     }
 }

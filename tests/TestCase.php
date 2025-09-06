@@ -22,15 +22,6 @@ class TestCase extends \Orchestra\Testbench\TestCase
     protected function setUp(): void
     {
         parent::setUp();
-
-        Factory::guessFactoryNamesUsing(
-            fn (string $modelName) => 'AymanAlhattami\\FilamentPageWithSidebar\\Database\\Factories\\'.class_basename($modelName).'Factory'
-        );
-    }
-
-    protected function tearDown(): void
-    {
-        parent::tearDown();
     }
 
     protected function getPackageProviders($app)

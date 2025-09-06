@@ -28,6 +28,11 @@ class TestCase extends \Orchestra\Testbench\TestCase
         );
     }
 
+    protected function tearDown(): void
+    {
+        parent::tearDown();
+    }
+
     protected function getPackageProviders($app)
     {
         return [

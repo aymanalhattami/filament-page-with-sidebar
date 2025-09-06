@@ -19,13 +19,12 @@ jobs:
         include:
           - laravel: 12.*
             testbench: 10.*
-            carbon: 3.*
 
     name: P${{ matrix.php }} - L${{ matrix.laravel }} - ${{ matrix.stability }} - ${{ matrix.os }}
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
@@ -41,14 +40,8 @@ jobs:
 
       - name: Install dependencies
         run: |
-          composer require \
-            "laravel/framework:${{ matrix.laravel }}" \
-            "orchestra/testbench:${{ matrix.testbench }}" \
-            "nesbot/carbon:${{ matrix.carbon }}" \
-            "phpunit/phpunit:<12.3.4" \
-            --no-interaction --no-update
+          composer require "laravel/framework:${{ matrix.laravel }}" "orchestra/testbench:${{ matrix.testbench }}" --no-interaction --no-update
           composer update --${{ matrix.stability }} --prefer-dist --no-interaction
-
 
       - name: List Installed Dependencies
         run: composer show -D

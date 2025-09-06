@@ -20,7 +20,7 @@ class FilamentPageSidebar implements MakeInterface
 
     protected bool|Closure $descriptionCopyable = false;
 
-    protected array $navigationItems;
+    protected array $navigationItems = [];
 
     protected PageNavigationLayoutEnum $pageNavigationLayoutEnum = PageNavigationLayoutEnum::Sidebar;
 
@@ -125,10 +125,7 @@ class FilamentPageSidebar implements MakeInterface
                     ];
                 }
 
-                $sort = array_search(
-                    $groupIndex,
-                    $groupsToSearch,
-                );
+                $sort = array_search($groupIndex, $groupsToSearch, true);
 
                 if ($sort === false) {
                     return count($registeredGroups);
@@ -139,9 +136,11 @@ class FilamentPageSidebar implements MakeInterface
             ->all();
     }
 
-    public function setPageNavigationLayout(PageNavigationLayoutEnum $pageNavigationLayoutEnum)
+    public function setPageNavigationLayout(PageNavigationLayoutEnum $pageNavigationLayoutEnum): static
     {
-        return $this->pageNavigationLayoutEnum = $pageNavigationLayoutEnum;
+        $this->pageNavigationLayoutEnum = $pageNavigationLayoutEnum;
+
+        return $this;
     }
 
     public function getPageNavigationLayout(): PageNavigationLayoutEnum

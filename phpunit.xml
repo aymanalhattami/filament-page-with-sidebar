@@ -6,12 +6,7 @@
          processIsolation="false"
          stopOnFailure="false"
          cacheDirectory=".phpunit.cache"
-         executionOrder="depends,defects"
-         requireCoverageMetadata="false"
-         beStrictAboutCoverageMetadata="false"
-         beStrictAboutOutputDuringTests="false"
-         failOnRisky="false"
-         failOnWarning="false">
+         executionOrder="depends,defects">
     <testsuites>
         <testsuite name="Unit">
             <directory>tests</directory>

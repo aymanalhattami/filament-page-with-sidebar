@@ -10,7 +10,7 @@ Organize pages in the sidebar in order to make navigation between pages more com
 
 **Note:**
 
-> For [Filament 4.x](https://filamentphp.com/docs/4.x/introduction/installation) use [version 3.x](https://github.com/aymanalhattami/filament-page-with-sidebar/tree/3.x)
+> For [Filament 4.x | Filament 5.x](https://filamentphp.com/docs/introduction/installation) use [version 3.x](https://github.com/aymanalhattami/filament-page-with-sidebar/tree/3.x)
 
 > For [Filament 3.x](https://filamentphp.com/docs/3.x/admin/installation) use [version 2.x](https://github.com/aymanalhattami/filament-page-with-sidebar/tree/2.x)
 
